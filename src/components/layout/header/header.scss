@@ -1,6 +1,57 @@
-header {
+.header {
 
   &__up {
     padding: 14px 108px;
+    display: flex;
+
+    &__city {
+      display: flex;
+
+      a {
+        padding-right: 20px;
+
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 120%;
+          color: var(--text-dark-alt);
+  
+          padding-top: 3px;
+        }
+      }
+    }
+    &__site {
+      padding: 0 0 0 526px;
+      display: flex;
+
+      &__searth {
+        display: flex;
+
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 120%;
+          color: var(--text-dark-alt);
+
+          padding: 1.5px 0 1.5px 6px;
+        }
+      }
+      &__auth {
+        display: flex;
+        padding-left: 24px;
+
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 120%;
+          color: var(--text-dark-alt);
+
+          padding: 1.5px 0 1.5px 6px;
+        }
+      }
+    }
   }
 }
