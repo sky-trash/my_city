@@ -58,7 +58,7 @@
           <img src="../../../../public/header/active-elip.svg" alt="">
           <h1>Справочник</h1>
         </a>
-        <a href="Aattractions">
+        <a href="/Aattractions">
           <img src="../../../../public/header/active-elip.svg" alt="">
           <h1>Достопремичательности</h1>
         </a>

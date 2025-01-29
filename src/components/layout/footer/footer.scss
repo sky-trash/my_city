@@ -1,0 +1,26 @@
+.footer {
+  background: var(--background-dark);
+  margin: 0 -108px;
+  padding: 0 108px;
+
+  &__logo {
+    padding-top: 66px;
+    display: flex;
+
+    &__navbar {
+      display: flex;
+      padding: 34px 0 0 317px;
+
+      h1 {
+        padding-right: 16px;
+
+        font-family: var(--font-family);
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 100%;
+        text-transform: uppercase;
+        color: var(--text-white);
+      }
+    }
+  }
+}
