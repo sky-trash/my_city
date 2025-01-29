@@ -86,6 +86,8 @@
       }
       img {
         display: none;
+        width: 20px;
+        height: 20px;
       }
       h1 {
         font-family: var(--font-family);
@@ -96,6 +98,17 @@
         color: var(--text-dark-alt);
 
         padding: 3px 0;
+      }
+
+      a:focus {
+        padding-left: 80px;
+
+        img {
+          display: block;
+        }
+        h1 {
+          color: var(--text-accent);
+        }
       }
     }
   }
