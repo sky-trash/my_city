@@ -1,4 +1,17 @@
 <script setup>
+// document.getElementById("copyLink").addEventListener("click", function() {
+//   // Получаем ссылку
+//   var link = document.getElementById("http://localhost:5173/").href;
+
+//   // Копируем ссылку в буфер обмена
+//   if (window.clipboardData && window.clipboardData.setData) {
+//     // Для IE
+//     window.clipboardData.setData("Text", link);
+//   } else if (navigator.clipboard && navigator.clipboard.write) {
+//     // Для других браузеров
+//     navigator.clipboard.writeText(link);
+//   }
+// });
 </script>
 <template>
   <footer class="footer">
@@ -35,7 +48,15 @@
       </div>
       <div class="footer__contact__text-social">
         <div class="footer__contact__text-social_text">
-          <p></p>
+          <div class="footer__contact__text-social_text_left">
+            <p>Телефон: <a href="#">+7 958 709-12-70</a></p>
+            <p>Email: <a href="#">bsk@gmail.com</a></p>
+            <p>Адрес: <a href="#">г. Борисоглебск, ул. Матросовская, д. 127</a></p>
+          </div>
+          <div class="footer__contact__text-social_text_right">
+            <p>Гл. редактор: <a href="#">Хвастунова А.А.</a></p>
+            <p>Журналист:<a href="#">Козякова Г.С., КрюковаС.Н.</a></p>
+          </div>
         </div>
         <div class="footer__contact__text-social_social">
           <a href="https://web.telegram.org/a/">
@@ -47,7 +68,7 @@
           <a href="https://ok.ru/">
             <img src="../../../../public/footer/Odnoklasniki.svg" alt="">
           </a>
-          <a href="">
+          <a href="#">
             <img src="../../../../public/footer/link.svg" alt="">
           </a>
         </div>
