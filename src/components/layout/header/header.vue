@@ -29,11 +29,40 @@
         </a>
       </div>
     </article>
-    <article class="header__logo">
-
-    </article>
+    <a href="/">
+      <article class="header__logo">
+        <img src="../../../../public/header/logo.svg" alt="">
+      </article>
+    </a>
     <article class="header__navbar">
-
+      <div class="header__navbar__menu">
+        <a href="#">
+          <img src="../../../../public/header/burger.svg" alt="">
+          <h1>Меню</h1>
+        </a>
+      </div>
+      <div class="header__navbar__navigation">
+        <a href="">
+          <img src="../../../../public/header/active-elip.svg" alt="">
+          <h1>Городские новости</h1>
+        </a>
+        <a href="">
+          <img src="../../../../public/header/active-elip.svg" alt="">
+          <h1>Афиша</h1>
+        </a>
+        <a href="">
+          <img src="../../../../public/header/active-elip.svg" alt="">
+          <h1>Родной город</h1>
+        </a>
+        <a href="">
+          <img src="../../../../public/header/active-elip.svg" alt="">
+          <h1>Справочник</h1>
+        </a>
+        <a href="">
+          <img src="../../../../public/header/active-elip.svg" alt="">
+          <h1>Достопремичательности</h1>
+        </a>
+      </div>
     </article>
   </header>
 </template>

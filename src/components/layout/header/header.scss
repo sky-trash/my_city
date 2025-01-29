@@ -1,7 +1,7 @@
 .header {
 
   &__up {
-    padding: 14px 108px;
+    padding-top: 14px;
     display: flex;
 
     &__city {
@@ -51,6 +51,51 @@
 
           padding: 1.5px 0 1.5px 6px;
         }
+      }
+    }
+  }
+  &__logo {
+    padding-top: 20px;
+  }
+  &__navbar {
+    padding-top: 20px;
+    display: flex;
+
+    &__menu {
+
+      a {
+        display: flex;
+      }
+      h1 {
+        font-family: var(--font-family);
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 100%;
+        text-transform: uppercase;
+        color: var(--button-primary);
+
+        padding: 3px 0 3px 8px;
+      }
+    }
+    &__navigation {
+      display: flex;
+
+      a {
+        display: flex;
+        padding-left: 100px;
+      }
+      img {
+        display: none;
+      }
+      h1 {
+        font-family: var(--font-family);
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 100%;
+        text-transform: uppercase;
+        color: var(--text-dark-alt);
+
+        padding: 3px 0;
       }
     }
   }
