@@ -1,0 +1,44 @@
+.main {
+  padding: 40px 0;
+
+  &__news {
+
+    &__navbar {
+      display: flex;
+      justify-content: space-between;
+
+      &__all {
+        border-radius: 35px;
+        padding: 5px 15px;
+        width: 114px;
+        height: 28px;
+        background: var(--button-black);
+
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 600;
+          font-size: 14px;
+          text-align: center;
+          color: var(--text-white);
+
+          width: max-content;
+        }
+      }
+      &__more {
+
+        a {
+          display: flex;
+        }
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 600;
+          font-size: 14px;
+          text-transform: uppercase;
+          color: var(--text-accent);
+
+          padding: 3.5px 1px;
+        }
+      }
+    }
+  }
+}
