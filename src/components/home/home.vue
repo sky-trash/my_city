@@ -20,6 +20,20 @@
         </div>
       </div> 
     </article>
+    <article class="main__cause">
+      <img src="../../../public/home/cause.svg" alt="">
+      <div class="main__cause__text">
+        <h1>5 весомых причин переехать в Борисоглебск</h1>
+      </div>
+      <div class="main__cause__">
+
+      </div>
+      <div class="main__cause__button">
+        <button>
+          
+        </button>
+      </div>
+    </article>
   </main>
 </template>
 <style scoped>
