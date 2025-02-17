@@ -41,4 +41,40 @@
       }
     }
   }
+  &__cause {
+
+    #image-cause {
+      margin: 0 0 0 -108px;
+      position: absolute;
+    }
+    &__content {
+      position: absolute;
+      padding: 100px 0 101px 0;
+
+      &__text {
+
+        h1 {
+          font-family: var(--second-family);
+          font-weight: 900;
+          font-size: 52px;
+          line-height: 110%;
+          color: var(--background-white);
+        }
+      }
+      &__five {
+        padding-top: 40px;
+
+        &__cause {
+          display: flex;
+          padding-bottom: 32px;
+        }
+      }
+      &__button {
+        padding-top: 16px;
+      }
+    }
+  }
+  &__map {
+    padding-top: 921px;
+  }
 }
