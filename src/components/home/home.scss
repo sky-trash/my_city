@@ -67,10 +67,37 @@
         &__cause {
           display: flex;
           padding-bottom: 32px;
+
+          h1 {
+            padding: 9px 0 0 28px;
+            font-family: var(--font-family);
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 130%;
+            color: var(--background-white);
+          }
         }
       }
       &__button {
         padding-top: 16px;
+
+        button {
+          display: flex;
+          background: var(--background-white);
+          padding: 10px 29.5px 12px 35.5px;
+          border-radius: 10px;
+          border: none;
+
+          h1 {
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+            color: var(--background-peoprle);
+          }
+          img {
+            padding: 2px 0 2px 14px;
+          }
+        }
       }
     }
   }
