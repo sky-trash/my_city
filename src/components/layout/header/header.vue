@@ -15,7 +15,7 @@
         </a>
       </div>
       <div class="header__up__site">
-        <a href="#">
+        <a href="/Directory">
           <div class="header__up__site__searth">
             <img src="../../../../public/header/search.svg" alt="">
             <h1>Поиск по сайту</h1>
