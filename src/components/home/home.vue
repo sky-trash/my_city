@@ -1,4 +1,5 @@
 <script setup>
+  import Application from '../application/application.vue';
 </script>
 <template>
   <main class="main">
@@ -60,6 +61,7 @@
 
     </article>
   </main>
+  <Application/>
 </template>
 <style scoped>
 @import "./home.scss";

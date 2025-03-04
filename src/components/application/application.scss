@@ -1,0 +1,88 @@
+.main__application {
+  background: var(--background-grey);
+  margin: 0 -108px;
+  padding: 100px 108px 85px;
+
+  &__text {
+    h1 {
+      font-family: var(--second-family);
+      font-weight: 800;
+      font-size: 52px;
+      line-height: 110%;
+      background: linear-gradient(165deg, #56108d 0%, #1c1246 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  &__form {
+    padding: 30px 1px 0;
+
+    &__input {
+
+      &__block {
+        display: flex;
+
+        &__card {
+          padding: 0 40px 0 0;
+
+          h1 {
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+            color: var(--text-dark);
+            padding: 0 0 8px;
+          }
+          input {
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            width: 276px;
+            height: 44px;
+            background: var(--background-white);
+
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+            color: rgba(143, 143, 143, 0.5);
+          }
+        }
+        &__buuton {
+          padding: 35px 0 0;
+
+          button {
+            border: none;
+            border-radius: 10px;
+            padding: 10px 14px 12px 14px;
+            width: 275px;
+            height: 41px;
+            background: var(--button-primary);
+
+            h1 {
+              font-family: var(--font-family);
+              font-weight: 400;
+              font-size: 16px;
+              color: var(--text-white);
+            }
+          }
+        }
+      }
+
+      &__text {
+        padding: 30px 0 0;
+        display: flex;
+        justify-content: center;
+
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 150%;
+          color: var(--text-grey);
+        }
+      }
+    }
+  }
+}

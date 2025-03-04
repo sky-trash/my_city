@@ -1,0 +1,16 @@
+.auth {
+  padding: 108px 0px;
+
+  &__content {
+    flex: 1 1 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 0 0 10px rgba(131, 124, 124, 0.411);
+    padding: 25px;
+    border-radius: 10px;
+    margin: 0 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
