@@ -108,6 +108,43 @@
     margin: 0 -108px;
     padding: 100px 108px;
     background: linear-gradient(138deg, #4e1084 0%, #391169 100%);
-    
+
+    &__text {
+
+      h1 {
+        font-family: var(--second-family);
+        font-weight: 900;
+        font-size: 52px;
+        line-height: 110%;
+        color: var(--background-white);
+      }
+    }
+    &__content {
+      display: flex;
+      padding: 30px 0 0;
+
+      &__card {
+        margin: 0 40px 0 0;
+        width: 381px;
+        height: 159px;
+
+        h1 {
+          font-family: var(--second-family);
+          font-weight: 500;
+          font-size: 82px;
+          line-height: 110%;
+          color: #a815f8;
+
+          padding: 20px 0;
+        }
+        p {
+          font-family: var(--font-family);
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 110%;
+          color: var(--background-white);
+        }
+      }
+    }
   }
 }
