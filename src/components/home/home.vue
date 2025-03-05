@@ -1,5 +1,5 @@
 <script setup>
-  import Application from '../application/application.vue';
+import Application from '../application/application.vue';
 </script>
 <template>
   <main class="main">
@@ -60,8 +60,27 @@
     <article class="main__map">
 
     </article>
+    <article class="main__numbers">
+      <div class="main__numbers__text">
+        <h1>Борисоглебск в цифрах</h1>
+      </div>
+      <div class="main__numbers__content">
+        <div class="main__numbers__content__card">
+          <h1>60 687</h1>
+          <p>человек численность населения</p>
+        </div>
+        <div class="main__numbers__content__card">
+          <h1>113</h1>
+          <p>памятников культуры и архитектуры</p>
+        </div>
+        <div class="main__numbers__content__card">
+          <h1>25</h1>
+          <p>количество ВУЗов и СУЗов</p>
+        </div>
+      </div>
+    </article>
   </main>
-  <Application/>
+  <Application />
 </template>
 <style scoped>
 @import "./home.scss";
