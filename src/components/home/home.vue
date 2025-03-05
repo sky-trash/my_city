@@ -79,6 +79,22 @@ import Application from '../application/application.vue';
         </div>
       </div>
     </article>
+    <article class="main__photo">
+      <img src="../../../public/home/photo/1651878592_12-celes-club-p-gorod-borisoglebsk-voronezhskoi-oblasti-kr-13.svg" alt="">
+      <img src="../../../public/home/photo/1651878585_28-celes-club-p-gorod-borisoglebsk-voronezhskoi-oblasti-kr-31 (1).svg" alt="">
+      <img id="photo3" src="../../../public/home/photo/pamyatnik-ushedshim-pokoleniyam.svg" alt="">
+      <img src="../../../public/home/photo/borisoglebsk.svg" alt="">
+      <button>
+        <img src="../../../public/home/photo/camera-02.svg" alt="">
+        <h1>Подделиться фото</h1>
+      </button>
+      <img src="../../../public/home/photo/408783.svg" alt="">
+      <img src="../../../public/home/photo/caption.svg" alt="">
+      <img src="../../../public/home/photo/1651878599_7-celes-club-p-gorod-borisoglebsk-voronezhskoi-oblasti-kr-8.svg" alt="">
+      <img src="../../../public/home/photo/v0rpwo9balc.svg" alt="">
+      <img src="../../../public/home/photo/1651878623_31-celes-club-p-gorod-borisoglebsk-voronezhskoi-oblasti-kr-34 (1).svg" alt="">
+      <img src="../../../public/home/photo/1651878662_34-celes-club-p-gorod-borisoglebsk-voronezhskoi-oblasti-kr-37.svg" alt="">
+    </article>
   </main>
   <Application />
 </template>
