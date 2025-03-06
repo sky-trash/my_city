@@ -20,20 +20,72 @@ import Application from '../application/application.vue';
           <div class="main__news__content__card__icons">
             <img src="../../../public/home/image.svg" alt="">
           </div>
-        </div>
-        <div class="main__news__content__card">
-          <div class="main__news__content__card__icons">
-            <img src="../../../public/home/news2.svg" alt="">
+          <div class="main__news__content__card__info">
+            <div class="main__news__content__card__info__tag">
+              <p>происшествия</p>
+            </div>
+            <div class="main__news__content__card__info__text">
+              <h1>В Вронежской области потерпел крушение самолет Су-34</h1>
+            </div>
+            <div class="main__news__content__card__info__time">
+              <p>Вчера, 23:56</p>
+              <img src="../../../public/home/eye.svg" alt="">
+              <p>546</p>
+            </div>
           </div>
         </div>
         <div class="main__news__content__card">
           <div class="main__news__content__card__icons">
             <img src="../../../public/home/news2.svg" alt="">
+          </div>
+          <div class="main__news__content__card__info">
+            <div class="main__news__content__card__info__tag">
+              <p>история одного города</p>
+            </div>
+            <div class="main__news__content__card__info__text">
+              <h1>История<br> Теллемаовского леса.<br>Часть 1</h1>
+            </div>
+            <div class="main__news__content__card__info__time">
+              <p>19 сентября, 16:00</p>
+              <img src="../../../public/home/eye.svg" alt="">
+              <p>2310</p>
+            </div>
+          </div>
+        </div>
+        <div class="main__news__content__card">
+          <div class="main__news__content__card__icons">
+            <img src="../../../public/home/news2.svg" alt="">
+          </div>
+          <div class="main__news__content__card__info">
+            <div class="main__news__content__card__info__tag">
+              <p>история одного города</p>
+            </div>
+            <div class="main__news__content__card__info__text">
+              <h1>История<br> Теллемаовского леса.<br>Часть 2</h1>
+            </div>
+            <div class="main__news__content__card__info__time">
+              <p>19 сентября, 16:00</p>
+              <img src="../../../public/home/eye.svg" alt="">
+              <p>2310</p>
+            </div>
           </div>
         </div>
         <div class="main__news__content__card">
           <div class="main__news__content__card__icons">
             <img src="../../../public/home/news4.svg" alt="">
+          </div>
+          <div class="main__news__content__card__info">
+            <div class="main__news__content__card__info__tag">
+              <p>спорт</p>
+            </div>
+            <div class="main__news__content__card__info__text">
+              <h1>Нападающий ФК «Кристалл-МЭЗ» о матче <br>с главными соперниками</h1>
+            </div>
+            <div class="main__news__content__card__info__time">
+              <p>Вчера, 23:56</p>
+              <img src="../../../public/home/eye.svg" alt="">
+              <p>546</p>
+            </div>
           </div>
         </div>
       </div>

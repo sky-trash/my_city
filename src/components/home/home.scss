@@ -40,6 +40,67 @@
         }
       }
     }
+    &__content {
+      display: flex;
+      padding: 30px 0 0 0;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    
+      &__card {
+        padding: 0 0 30px 0;
+
+        &__info {
+          padding: 16px 0 0 0;
+
+          &__tag {
+            border: 1px solid var(--tag-border);
+            border-radius: 35px;
+            height: 25px;
+            max-width: max-content;
+
+            p {
+              font-family: var(--font-family);
+              font-weight: 600;
+              font-size: 12px;
+              line-height: 100%;
+              text-transform: uppercase;
+              color: var(--tag-text);
+
+              padding: 6.5px 10px;
+            }
+          }
+          &__text {
+            width: 439px;
+            padding: 12px 0 0 0;
+
+            h1 {
+              font-family: var(--second-family);
+              font-weight: 600;
+              font-size: 32px;
+              line-height: 110%;
+              color: var(--text-dark);
+            }
+          }
+          &__time {
+            display: flex;
+            padding: 12px 0 0;
+
+            p {
+              font-family: var(--font-family);
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 120%;
+              color: var(--text-grey);
+
+              padding: 1.5px 0;
+            }
+            img {
+              padding: 0 4px 0 10px;
+            }
+          }
+        }
+      }
+    }
   }
   &__cause {
 
