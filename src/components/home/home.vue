@@ -128,22 +128,6 @@ import Application from '../application/application.vue';
     </article>
     <article class="main__map">
       <img id="map" src="../../../public/home/map/map.svg" alt="">
-      <div class="main__map__voronez">
-        <img id="msp-voronez" src="../../../public/home/map/Voronezh.svg" alt="">
-        <img id="elips-voroniz" src="../../../public/home/map/Ellipse-city.svg" alt="">
-      </div>
-      <div class="main__map__tambov">
-        <img id="msp-tambov" src="../../../public/home/map/Tambov.svg" alt="">
-        <img id="elips-tambov" src="../../../public/home/map/Ellipse-city.svg" alt="">
-      </div>
-      <div class="main__map__penza">
-        <img id="msp-penza" src="../../../public/home/map/Penza.svg" alt="">
-        <img id="elips-penza" src="../../../public/home/map/Ellipse-city.svg" alt="">
-      </div>
-      <div class="main__map__saratov">
-        <img id="msp-saratov" src="../../../public/home/map/Saratov.svg" alt="">
-        <img id="elips-saratov" src="../../../public/home/map/Ellipse-city.svg" alt="">
-      </div>
     </article>
     <article class="main__numbers">
       <div class="main__numbers__text">
