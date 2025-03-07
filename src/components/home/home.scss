@@ -163,7 +163,7 @@
     }
   }
   &__map {
-    padding: 921px 0 100px 0;
+    padding: 921px 0 60px 0;
   }
   &__numbers {
     margin: 0 -108px;
@@ -208,21 +208,21 @@
       }
     }
   }
-  &__photo {
-    margin: 60px 0;
+  // &__photo {
+  //   margin: 60px 0;
 
-    button {
-      border: none;
-      border-radius: 20px;
-      width: 240px;
-      height: 240px;
-      background: #56108d;
-    }
-    img {
-      margin: 0 16px 16px 0;
-    }
-    #photo3 {
-      margin: 0 0 16px 0;
-    }
-  }
+  //   button {
+  //     border: none;
+  //     border-radius: 20px;
+  //     width: 240px;
+  //     height: 240px;
+  //     background: #56108d;
+  //   }
+  //   img {
+  //     margin: 0 16px 16px 0;
+  //   }
+  //   #photo3 {
+  //     margin: 0 0 16px 0;
+  //   }
+  // }
 }

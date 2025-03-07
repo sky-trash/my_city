@@ -148,7 +148,7 @@ import Application from '../application/application.vue';
         </div>
       </div>
     </article>
-    <article class="main__photo">
+    <!-- <article class="main__photo">
       <img src="../../../public/home/photo/1651878592_12-celes-club-p-gorod-borisoglebsk-voronezhskoi-oblasti-kr-13.svg"
         alt="">
       <img
@@ -170,7 +170,7 @@ import Application from '../application/application.vue';
         alt="">
       <img src="../../../public/home/photo/1651878662_34-celes-club-p-gorod-borisoglebsk-voronezhskoi-oblasti-kr-37.svg"
         alt="">
-    </article>
+    </article> -->
   </main>
   <Application />
 </template>
