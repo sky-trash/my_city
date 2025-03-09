@@ -113,3 +113,25 @@
     }
   }
 }
+
+@media (max-width: 320px) {
+  .header {
+
+    &__up {
+      padding-top: 10px;
+  
+      &__city {
+        display: none;
+      }
+      &__site {
+        padding: 0 0;
+      }
+    }
+    &__navbar {
+
+      &__navigation {
+        display: none;
+      }
+    }
+  }
+}
