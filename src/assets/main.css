@@ -105,3 +105,9 @@ input {
   --font5: "Dosis", sans-serif;
   --font6: "Merriweather", sans-serif;
 }
+
+@media (max-width: 320px) {
+	.wrapper {
+		padding: 0 10px;
+	}
+}
