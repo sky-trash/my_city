@@ -3,5 +3,125 @@
   display: flex;
   justify-content: center;
 
+  &__content {
+    border: 1px solid rgba(102, 102, 102, 0.5);
+    border-radius: 24px;
+    width: 1017px;
+    height: auto;
+    background: #fff;
 
+    display: flex;
+
+    &__form {
+      padding: 58px 0 0 56px;
+
+      &__create {
+        
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 500;
+          font-size: 32px;
+          color: #333;
+        }
+        p {
+          padding: 3px 0 0 0;
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 16px;
+          color: #333;
+
+          a {
+            padding: 0 0 0 5px;
+            text-decoration: underline;
+            text-decoration-skip-ink: none;
+            color: #111;
+          }
+        }
+      }
+      &__input {
+        padding: 50px 0 0 0;
+
+        &__login {
+          padding: 0 0 24px 0;
+
+          h1 {
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+            color: #666;
+            padding: 0 0 7px 0;
+          }
+          input {
+            border: 1px solid rgba(102, 102, 102, 0.35);
+            border-radius: 12px;
+            width: 534px;
+            height: 56px;
+          }
+        }      
+        &__password {
+          padding: 0 0 5px 0;
+
+          h1 {
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+            color: #666;
+            padding: 0 0 7px 0;
+          }
+          input {
+            border: 1px solid rgba(102, 102, 102, 0.35);
+            border-radius: 12px;
+            width: 534px;
+            height: 56px;
+          }
+        }
+        &__text {
+
+          p {
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+            color: #666;
+          }
+        }
+      }
+      &__button {
+        padding: 40px 0 58px 0;
+        display: flex;
+
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 16px;
+          text-decoration: underline;
+          text-decoration-skip-ink: none;
+          color: #111;
+          padding: 27px 119px 0 0;
+        }
+        button {
+          border: 0;
+          border-radius: 32px;
+          width: 259px;
+          height: 64px;
+          background: #111;
+          opacity: 0.25;
+
+          p {
+            font-family: var(--font-family);
+            font-weight: 500;
+            font-size: 22px;
+            text-align: center;
+            color: #fff;
+          }
+        }
+      }
+    }
+    &__icons {
+      padding: 73px 0 0 37px;
+      text-decoration: underline;
+      text-decoration-skip-ink: none;
+      color: #111;
+      
+    }
+  }
 }
