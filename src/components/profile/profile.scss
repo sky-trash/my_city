@@ -78,9 +78,46 @@
       }
     }
   }
-  &__line {
-    display: flex;
-    justify-content: center;
-    padding: 30px 0 0 0;
+  // &__line {
+  //   display: flex;
+  //   justify-content: center;
+  //   padding: 30px 0 0 0;
+  // }
+  &__history {  
+    padding: 50px 0 0 0;
+
+    &__content {
+
+      &__text {
+        display: flex;
+        width: 335px;
+        justify-content: center;
+        border: none;
+        border-bottom: 3px solid #141416;
+        padding: 0 0 15px 0;
+
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 153%;
+          color: #000;
+          padding: 1px 0 1px 6px;
+        }
+      }
+      &__display {
+        padding: 85px 0 0 0;
+        display: flex;
+        justify-content: space-between;
+
+        &__card {
+          border-radius: 17px;
+          width: 204px;
+          height: 292px;
+          box-shadow: 28px 9px 43px 0 rgba(199, 199, 199, 0.6);
+          background: #fff;
+        }
+      }
+    }
   }
 }

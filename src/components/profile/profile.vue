@@ -29,12 +29,32 @@ import Footer from '../layout/footer/footer.vue';
         </button>
       </div>
     </article>
-    <div class="profile__line">
+    <!-- <div class="profile__line">
       <img src="../../../public/profile/Line.svg" alt="">
-    </div>
+    </div> -->
     <article class="profile__history">
-      <div>
+      <div class="profile__history__content">
+        <div class="profile__history__content__text">
+          <img src="../../../public/profile/Ticket.svg" alt="">
+          <h1>История</h1>
+        </div>
+        <div class="profile__history__content__display">
+          <div class="profile__history__content__display__card">
 
+          </div>
+          <div class="profile__history__content__display__card">
+            
+          </div>
+          <div class="profile__history__content__display__card">
+            
+          </div>
+          <div class="profile__history__content__display__card">
+            
+          </div>
+          <div class="profile__history__content__display__card">
+            
+          </div>
+        </div>
       </div>
     </article>
   </main>
