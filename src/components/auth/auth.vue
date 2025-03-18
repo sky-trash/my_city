@@ -8,7 +8,7 @@ import Header from "../layout/header/header.vue"
       <div class="auth__content__form">
         <div class="auth__content__form__create">
           <h1>Войдите в свой аккаунт</h1>
-          <p>Еще нет аккаунта?<a href="/Register">Зарегестрироваться</a></p>
+          <p>Еще нет аккаунта?<a href="/Register">Зарегистрироваться</a></p>
         </div>
         <div class="auth__content__form__input">
           <div class="auth__content__form__input__login">
@@ -31,7 +31,7 @@ import Header from "../layout/header/header.vue"
         </div>
         <div class="auth__content__form__button">
           <a href="/Register">
-            <h1>Зарегестрироваться <br>в системе</h1>
+            <h1>Зарегистрироваться <br>в системе</h1>
           </a>
           <button>
             <p>Войти в аккаунт</p>
