@@ -32,4 +32,129 @@
       }
     }
   }
+  &__events {
+    padding: 60px 0;
+
+    &__text {
+      border-radius: 35px;
+      padding: 5px 15px;
+      width: 118px;
+      height: 28px;
+      background: var(--text-dark);
+
+      h1 {
+        font-family: var(--font-family);
+        font-weight: 600;
+        font-size: 14px;
+        text-align: center;
+        color: var(--background-white);
+
+        width: max-content;
+      }
+    }
+    &__content {
+      padding: 30px 0;
+      display: flex;
+      flex-wrap: wrap;
+      grid-gap: 30px;
+
+      &__card {
+
+        &__icons {
+
+          img {
+            width: 388px;
+            height: 291px;
+            border-radius: 4px;
+          }
+        }
+        &__info {
+          padding: 16px 0 0 0;
+
+          &__tag {
+            display: flex;
+
+            h1 {
+              font-family: var(--font-family);
+              font-weight: 600;
+              font-size: 12px;
+              line-height: 100%;
+              text-transform: uppercase;
+              color: var(--tag-text);
+
+              padding: 6.5px 10px;
+              border: 1px solid var(--tag-border);
+              border-radius: 35px;
+              height: 25px;
+              max-width: max-content;
+            }
+            h2 {
+              font-family: var(--font-family);
+              font-weight: 600;
+              font-size: 12px;
+              line-height: 100%;
+              text-transform: uppercase;
+              color: var(--background-white);
+
+              border-radius: 20px;
+              padding: 8px 10px;
+              width: 71px;
+              height: 28px;
+              background: var(--text-dark);
+
+              margin: 0 0 0 10px;
+            }
+          }
+          &__text {
+            width: 388px;
+            padding: 12px 0 0 0;
+
+            h1 {
+              font-family: var(--second-family);
+              font-weight: 600;
+              font-size: 32px;
+              line-height: 110%;
+              color: var(--text-dark);
+            }
+          }
+          &__time {
+            display: flex;
+            padding: 12px 0 0;
+
+            p {
+              font-family: var(--font-family);
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 120%;
+              color: var(--text-grey);
+
+              padding: 1.5px 0;
+            }
+            img {
+              margin: 1.5px 4px 1.5px 6px;
+            }
+          }
+        }
+      }
+    }
+    &__button {
+
+      button {
+        border-radius: 10px;
+        padding: 10px 14px 12px 14px;
+        width: 1224px;
+        height: 41px;
+        background: var(--button-black);
+      
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 16px;
+          color: var(--text-white);
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
 }

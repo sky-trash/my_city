@@ -60,6 +60,14 @@
 
       &__card {
 
+        &__icons {
+
+          img {
+            width: 388px;
+            height: 291px;
+            border-radius: 4px;
+          }
+        }
         &__info {
           padding: 16px 0 0 0;
 
