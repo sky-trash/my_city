@@ -1,0 +1,59 @@
+.directory {
+  padding: 60px 0;
+
+  &__layout {
+
+    &__home {
+      display: flex;
+      padding: 4px 0;
+
+      h1 {
+        font-family: var(--font-family);
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 120%;
+        letter-spacing: 0.01em;
+        color: var(--text-link);
+      }
+      img {
+        padding: 0.5px 0 0.5px 4px;
+      }
+    }
+    &__text {
+      padding: 5px 0 0 0;
+
+      h1 {
+        font-family: var(--second-family);
+        font-weight: 900;
+        font-size: 52px;
+        line-height: 110%;
+        text-transform: uppercase;
+        color: var(--text-header);
+      }
+    }
+  }
+  &__content {
+    display: flex;
+    padding: 30px;
+
+    &__enterprises {
+
+      &__text {
+        padding: 4px 0;
+        display: flex;
+        justify-content: space-between;
+        width: 284px;
+
+        p {
+          font-family: var(--font-family);
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 110%;
+          color: var(--text-dark-alt);
+
+          padding: 3px 0;
+        }
+      }
+    }
+  }
+}

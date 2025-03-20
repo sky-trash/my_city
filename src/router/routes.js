@@ -4,6 +4,7 @@ import Register from "../pages/Register.vue"
 import Profile from "../pages/Profile.vue"
 import Poster from "../pages/Poster.vue"
 import News from "../pages/News.vue"
+import Directory from "../pages/Directory.vue"
 
 export const routes = [
   {
@@ -29,5 +30,9 @@ export const routes = [
   {
     path: "/News",
     component: News,
+  },
+  {
+    path: "/Directory",
+    component: Directory,
   },
 ]

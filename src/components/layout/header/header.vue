@@ -37,7 +37,7 @@
     </a>
     <article class="header__navbar">
       <div class="header__navbar__menu">
-        <a href="#">
+        <a href="/">
           <img src="../../../../public/header/burger.svg" alt="">
           <h1>Меню</h1>
         </a>
@@ -51,10 +51,10 @@
           <img src="../../../../public/header/active-elip.svg" alt="">
           <h1>Афиша</h1>
         </a>
-        <a href="/News">
+        <!-- <a href="/City">
           <img src="../../../../public/header/active-elip.svg" alt="">
           <h1>Родной город</h1>
-        </a>
+        </a> -->
         <a href="/Directory">
           <img src="../../../../public/header/active-elip.svg" alt="">
           <h1>Справочник</h1>
