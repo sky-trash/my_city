@@ -19,7 +19,7 @@ import Footer from '../layout/footer/footer.vue';
     </article>
     <article class="directory__content">
       <div class="directory__content__enterprises">
-        <a href="#">
+        <a href="" id="state">
           <div class="directory__content__enterprises__text">
             <p>Государственные учереждения</p>
             <img src="../../../public/directory/enterprises/right.svg" alt="">
