@@ -200,9 +200,9 @@ import Footer from '../layout/footer/footer.vue';
         </button>
       </div>
     </article>
-    <article class="poster__calendar">
+    <!-- <article class="poster__calendar">
 
-    </article>
+    </article> -->
   </main>
   <Application />
   <Footer />
