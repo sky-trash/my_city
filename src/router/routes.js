@@ -3,6 +3,7 @@ import Auth from "../pages/Auth.vue"
 import Register from "../pages/Register.vue"
 import Profile from "../pages/Profile.vue"
 import Poster from "../pages/Poster.vue"
+import News from "../pages/News.vue"
 
 export const routes = [
   {
@@ -24,5 +25,9 @@ export const routes = [
   {
     path: "/Poster",
     component: Poster,
+  },
+  {
+    path: "/News",
+    component: News,
   },
 ]
