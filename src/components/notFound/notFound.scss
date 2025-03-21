@@ -1,5 +1,5 @@
 .notFound {
-  padding: 140px 0 60px 0;
+  padding: 170px 0 60px 0;
   display: flex;
   justify-content: center;
 
@@ -51,6 +51,36 @@
           font-weight: 400;
           font-size: 16px;
           color: var(--background-white);
+        }
+      }
+    }
+  }
+}
+@media (max-width: 320px) {
+  .notFound {
+    padding: 140px 0 200px 0;
+
+    &__error {
+
+      &__404 {
+        display: flex;
+        justify-content: center;
+
+        p {
+          font-size: 32px;
+        }
+      }
+      &__text {
+        padding: 10px 0;
+
+        p {
+          font-size: 20px;
+        }
+      }
+      &__button {
+
+        button {
+          width: 300px;
         }
       }
     }
