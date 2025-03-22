@@ -119,10 +119,12 @@ import Application from '../application/application.vue';
           </div>
         </div>
         <div class="main__cause__content__button">
-          <button>
-            <h1>Подробнее</h1>
-            <img src="../../../public/home/right-cause.svg" alt="">
-          </button>
+          <a href="/Reasons">
+            <button>
+              <h1>Подробнее</h1>
+              <img src="../../../public/home/right-cause.svg" alt="">
+            </button>
+          </a>
         </div>
       </div>
     </article>

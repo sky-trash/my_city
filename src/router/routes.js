@@ -6,8 +6,9 @@ import Poster from "../pages/Poster.vue"
 import News from "../pages/News.vue"
 import Directory from "../pages/Directory.vue"
 import Contact from "../pages/Contact.vue"
-import Attraction from "../pages/Attraction.vue"
 import NotFound from "../pages/NotFound.vue"
+import Attraction from "../pages/Attraction.vue"
+import Reasons from "../pages/Reasons.vue"
 
 export const routes = [
   {
@@ -49,5 +50,9 @@ export const routes = [
   {
     path: "/Attraction",
     component: Attraction,
+  },
+  {
+    path: "/Reasons",
+    component: Reasons,
   },
 ]
