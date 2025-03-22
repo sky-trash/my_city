@@ -44,7 +44,7 @@ import Footer from '../layout/footer/footer.vue';
       </div>
       <div class="contact__teams__card">
         <div class="contact__teams__card__icons">
-          <img src="../../../public/contact/me.jpeg" alt="">
+          <img src="../../../public/contact/teams.jpeg" alt="">
         </div>
         <div class="contact__teams__card__name">
           <h1>Матвеев Е.И.</h1>
