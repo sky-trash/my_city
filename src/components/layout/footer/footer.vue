@@ -22,7 +22,7 @@
         </a>
       </div>
       <div class="footer__logo__navbar">
-        <a href="/Aattractions">
+        <a href="/Attraction">
           <h1>Достопремичательности</h1>
         </a>
         <a href="/Poster">
@@ -49,13 +49,13 @@
       <div class="footer__contact__text-social">
         <div class="footer__contact__text-social_text">
           <div class="footer__contact__text-social_text_left">
-            <p>Телефон: <a href="#">+7 958 709-12-70</a></p>
-            <p>Email: <a href="#">bsk@gmail.com</a></p>
-            <p>Адрес: <a href="#">г. Борисоглебск, ул. Матросовская, д. 127</a></p>
+            <p>Телефон: <a href="/Contact">+7 996 216-21-47</a></p>
+            <p>Email: <a href="/Contact">bskone@gmail.com</a></p>
+            <p>Адрес: <a href="/Contact">г. Борисоглебск, ул. Матросовская, д. 127</a></p>
           </div>
           <div class="footer__contact__text-social_text_right">
-            <p>Гл. редактор: <a href="#">Хвастунова А.А.</a></p>
-            <p>Журналист:<a href="#">Козякова Г.С., КрюковаС.Н.</a></p>
+            <p>Гл. редактор: <a href="/Contact">Матвеев Е.И.</a></p>
+            <p>Разработчик:<a href="/Contact">Матвеев Е.И.</a></p>
           </div>
         </div>
         <div class="footer__contact__text-social_social">
