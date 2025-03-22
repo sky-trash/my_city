@@ -60,7 +60,7 @@
       justify-content: space-around;
 
       &__card {
-        width: 179px;
+        width: 180px;
         height: 194px;
 
         img {
@@ -74,7 +74,9 @@
           text-align: center;
           color: var(--text-grey);
         }
-        p:hover{
+      }
+      &__card:hover {
+        p {
           color: var(--text-accent);
         }
       }
