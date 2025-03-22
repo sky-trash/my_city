@@ -1,3 +1,140 @@
 .contact {
   padding: 60px 0;
+
+  &__layout {
+
+    a {
+      display: flex;
+    }
+    h1 {
+      font-family: var(--font-family);
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 120%;
+      letter-spacing: 0.01em;
+      color: var(--text-link);
+    }
+    img {
+      padding: 0.5px 0 0.5px 4px;
+    }
+  }
+  &__content {
+    display: flex;
+    padding: 30px 0 0;
+
+    &__text {
+
+      &__word {
+
+        p {
+          font-family: var(--second-family);
+          font-weight: 900;
+          font-size: 52px;
+          line-height: 110%;
+          text-transform: uppercase;
+          color: var(--text-header);
+        }
+      }
+      &__reader {
+        padding: 100px 0 0;
+
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 900;
+          font-size: 24px;
+          line-height: 110%;
+          color: var(--text-dark);
+
+          width: 697px;
+          padding: 0 0 30px;
+        }
+        h2 {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 150%;
+          color: var(--text-dark);
+
+          width: 697px;
+          padding: 0 0 30px;
+        }
+      }
+      &__icons {
+        position: absolute;
+        margin: -42px 0 0 359px;
+      }
+    }
+    &__icons {
+      padding: 0 0 0 34px;
+
+      img {
+        border-radius: 8px;
+        width: 491px;
+        height: 656px;
+      }
+    }
+  }
+  &__teams {
+    padding: 100px 0 0;
+
+    &__text {
+
+      h1 {
+        font-family: var(--second-family);
+        font-weight: 900;
+        font-size: 52px;
+        line-height: 110%;
+        color: var(--text-header);
+      }
+    }
+    &__card {
+      padding: 30px 0 0;
+
+      &__icons {
+        border-radius: 4px;
+        width: 283px;
+        height: 286px;
+      }
+      &__name {
+        padding: 20px 0 10px;
+
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 110%;
+          color: var(--text-dark);
+        }
+      }
+      &__description {
+
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 150%;
+          color: var(--text-grey);
+
+          width: 276px;
+        }
+        p {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 150%;
+          color: var(--text-grey);
+        }
+      }
+      &__email {
+        padding: 2px 0 0;
+        p {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 130%;
+          color: var(--text-header);
+        }
+      }
+    }
+  }
 }
