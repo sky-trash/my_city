@@ -5,10 +5,10 @@
   <header class="header">
     <article class="header__up">
       <div class="header__up__city">
-        <a href="/Work">
+        <a href="/Directory">
           <h1>Работа в Борисоглебске</h1>
         </a>
-        <a href="/Live">
+        <a href="/Directory">
           <h1>Жилье в Борисоглебске</h1>
         </a>
         <a href="/Contact">
