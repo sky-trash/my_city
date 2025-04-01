@@ -172,10 +172,56 @@ import Header from '../layout/header/header.vue';
         </div>
       </div>
       <div class="reasons__events__four">
-
+        <div class="reasons__events__four__text">
+          <h1>4. Развитая инфраструктура для активного отдыха</h1>
+        </div>
+        <div class="reasons__events__four__content">
+          <div class="reasons__events__four__content__description">
+            <img src="../../../public/reasons/events4/events4.svg" alt="">
+            <div class="reasons__events__four__content__description__up">
+              <h1>Cпортивные клубы и тренажерные залы</h1>
+              <p>Борисоглебск – это центр машиностроения Воронежской области. В городе осуществляют свою деятельность более 20 крупных предприятий. Существенное влияние на развитие экономики города и района оказывает строительная промышленность и сельское хозяйство. Борисоглебск издревле прославился как город купцов и ремесленников. На сегодняшний день торговля также остается одной из сильных отраслей хозяйства округа.</p>
+            </div>
+          </div>
+          <div class="reasons__events__four__content__icons">
+            <div class="reasons__events__four__content__icons__line">
+              <img src="../../../public/reasons/line.svg" alt="">
+              <p>128</p>
+            </div>
+            <div class="reasons__events__four__content__icons__map">
+              <img src="../../../public/reasons/events4/frends.svg" alt="">
+            </div>
+            <div class="reasons__events__four__content__icons__plochad">
+              <p>Спортивных организаций</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="reasons__events__five">
-
+        <div class="reasons__events__five__text">
+          <h1>5. Достойное жилье и уровень жизни</h1>
+        </div>
+        <div class="reasons__events__five__content">
+          <div class="reasons__events__five__content__description">
+            <img src="../../../public/reasons/events4/events4.svg" alt="">
+            <div class="reasons__events__five__content__description__up">
+              <h1>Разнообразные варианты жилья</h1>
+              <p>Борисоглебск предлагает разнообразные варианты жилья, включая новостройки и частные дома с участками. На данный момент активно ведётся застройка новых жилищных комплексов. Стоимость жизни в городе более доступна, чем в крупных мегаполисах, что делает его ещё привлекательнее.</p>
+            </div>
+          </div>
+          <div class="reasons__events__five__content__icons">
+            <div class="reasons__events__five__content__icons__line">
+              <img src="../../../public/reasons/line.svg" alt="">
+              <p>68 000</p>
+            </div>
+            <div class="reasons__events__five__content__icons__map">
+              <img src="../../../public/reasons/events5/people.svg" alt="">
+            </div>
+            <div class="reasons__events__five__content__icons__plochad">
+              <p>Численность населения</p>
+            </div>
+          </div>
+        </div>
       </div>
     </article>
   </main>
