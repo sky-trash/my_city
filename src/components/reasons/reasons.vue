@@ -106,7 +106,70 @@ import Header from '../layout/header/header.vue';
         </div>
       </div>
       <div class="reasons__events__three">
-
+        <div class="reasons__events__three__text">
+          <h1>3. Развитая инфраструктура</h1>
+        </div>
+        <div class="reasons__events__three__content">
+          <div class="reasons__events__three__content__description">
+            <div class="reasons__events__three__content__description__flex">
+              <img src="../../../public/reasons/events3/events3.svg" alt="">
+            </div>
+            <div class=" reasons__events__three__content__description__up">
+              <h1>Более 20 крупных предприятий</h1>
+              <p>Борисоглебск – это центр машиностроения Воронежской области. В городе осуществляют свою деятельность
+                более 20 крупных предприятий. Существенное влияние на развитие экономики города и района оказывает
+                строительная промышленность и сельское хозяйство. Борисоглебск издревле прославился как город купцов и
+                ремесленников. На сегодняшний день торговля также остается одной из сильных отраслей хозяйства округа.
+              </p>
+            </div>
+            <div class="reasons__events__three__content__description__center">
+              <h1>Развитые системы образования, культуры и здравоохранения</h1>
+              <p>В городе сформированы развитые системы образования, культуры и здравоохранения. Борисоглебск задает
+                высокий уровень образования благодаря своим школам, средне-специальным и высшим учебным заведениям.
+                Также этому способствует огромный выбор дополнительного образования, в том числе бесплатного.
+                <br><br>Кроме того, в городе на достойном уровне развита медицина, включая больницы и клиники, где вам
+                доступны услуги квалифицированных врачей и обследования на современном оборудовании.
+              </p>
+            </div>
+            <div class="reasons__events__three__content__description__button">
+              <h1>Три кита развития: промышленность, торговля и образование</h1>
+              <p>Сформировавшись как торговый, ремесленный и образовательный центр на востоке Черноземья, современный
+                Борисоглебск продолжает строить свое будущее на трёх китах: промышленности, торговле и образовании.</p>
+            </div>
+          </div>
+          <div class="reasons__events__three__content__icons">
+            <div class="reasons__events__three__content__icons__up">
+              <img src="../../../public/reasons/line.svg" alt="">
+              <div class="reasons__events__two__content__icons__up__img">
+                <h1>30</h1>
+                <img src="../../../public/reasons/events3/doctor.svg" alt="">
+              </div>
+              <div class="reasons__events__three__content__icons__up__text">
+                <p>Лечебно-профилактических организаций</p>
+              </div>
+            </div>
+            <div class="reasons__events__three__content__icons__center">
+              <img src="../../../public/reasons/line.svg" alt="">
+              <div class="reasons__events__three__content__icons__center__img">
+                <h1>39</h1>
+                <img src="../../../public/reasons/events3/school.svg" alt="">
+              </div>
+              <div class="reasons__events__three__content__icons__center__text">
+                <p>Субъектов и образования</p>
+              </div>
+            </div>
+            <div class="reasons__events__three__content__icons__button">
+              <img src="../../../public/reasons/line.svg" alt="">
+              <div class="reasons__events__two__content__icons__button__img">
+                <h1>660</h1>
+                <img src="../../../public/reasons/events3/institutions.svg" alt="">
+              </div>
+              <div class="reasons__events__three__content__icons__button__text">
+                <p>Всего предприятий и учреждений</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="reasons__events__four">
 
