@@ -47,7 +47,7 @@
       justify-content: space-evenly;
     
       &__card {
-        padding: 0 0 30px 0;
+        padding: 5px 10px 50px;
 
         &__info {
           padding: 16px 0 0 0;
@@ -99,6 +99,9 @@
             }
           }
         }
+      }
+      &__card:hover {
+        background-color: #ededed;
       }
     }
   }
@@ -157,6 +160,23 @@
           }
           img {
             padding: 2px 0 2px 14px;
+          }
+          #right-cause-white {
+            display: none;
+          }
+        }
+        button:hover {
+          background-color: var(--background-peoprle);
+          border: 1px dashed var(--background-white);
+
+          h1 {
+            color: var(--background-white);
+          }
+          img {
+            display: none;
+          }
+          #right-cause-white {
+            display: block;
           }
         }
       }

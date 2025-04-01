@@ -22,6 +22,9 @@
         text-transform: uppercase;
         color: var(--text-white);
       }
+      h1:hover {
+        color: var(--button-hover);
+      }
     }
   }
   &__contact {
@@ -67,6 +70,9 @@
             padding-left: 6px;
             width: max-content;
           }
+          a:hover {
+            color: var(--button-hover);
+          }
         }
         &_right {
           padding: 21px 0 0 32px;
@@ -91,6 +97,9 @@
 
             padding-left: 6px;
             width: max-content;
+          }
+          a:hover {
+            color: var(--button-hover);
           }
         }
       }

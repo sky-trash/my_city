@@ -67,6 +67,14 @@
               color: var(--text-white);
             }
           }
+          button:hover {
+            border: 1px dashed var(--button-primary);
+            background-color: var(--text-white);
+
+            h1 {
+              color: var(--button-primary);
+            }
+          }
         }
       }
 

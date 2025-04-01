@@ -19,6 +19,9 @@
   
           padding-top: 3px;
         }
+        h1:hover {
+          color: var(--button-pink);
+        }
       }
     }
     &__site {
@@ -38,6 +41,14 @@
           padding: 1.5px 0 1.5px 6px;
         }
       }
+      &__searth:hover {
+        h1 {
+          color: var(--button-pink);
+        }
+        img {
+          margin: -3px 0 0;
+        }
+      }
       &__auth {
         display: flex;
         padding-left: 24px;
@@ -50,6 +61,14 @@
           color: var(--text-dark-alt);
 
           padding: 1.5px 0 1.5px 6px;
+        }
+      }
+      &__auth:hover {
+        h1 {
+          color: var(--button-pink);
+        }
+        img {
+          margin: -3px 0 0;
         }
       }
     }

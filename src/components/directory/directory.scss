@@ -1,4 +1,4 @@
-.directory {
+ .directory {
   padding: 60px 0;
 
   &__layout {
@@ -52,6 +52,15 @@
           color: var(--text-dark-alt);
 
           padding: 3px 0;
+        }
+      }
+      &__text:hover {
+
+        p {
+          color: var(--button-pink);
+        }
+        img {
+          margin: 0 -3px 0 0;
         }
       }
     }

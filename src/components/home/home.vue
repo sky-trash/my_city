@@ -123,6 +123,7 @@ import Application from '../application/application.vue';
             <button>
               <h1>Подробнее</h1>
               <img src="../../../public/home/right-cause.svg" alt="">
+              <img id="right-cause-white" src="../../../public/home/right-cause-white.svg" alt="">
             </button>
           </a>
         </div>

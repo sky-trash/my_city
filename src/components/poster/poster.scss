@@ -136,6 +136,10 @@
           }
         }
       }
+      &__card:hover {
+        background-color: #ededed;
+        border-radius: 3px;
+      }
     }
     &__button {
 
