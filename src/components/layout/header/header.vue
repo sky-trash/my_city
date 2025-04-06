@@ -1,5 +1,28 @@
 <script setup>
+import { onMounted, ref } from 'vue';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
+const isLoggenIn = ref(false);
+
+let auth;
+onMounted(() => {
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isLoggenIn.value = true;
+    } else {
+      isLoggenIn.value = false;
+    }
+  });
+});
+
+const handleSignOut = () => {
+  signOut(auth).then(() => {
+    router.push("/");
+  });
+};
 </script>
 <template>
   <header class="header">
@@ -26,6 +49,12 @@
           <div class="header__up__site__auth">
             <img src="../../../../public/header/login.svg" alt="">
             <h1>Вход</h1>
+          </div>
+        </a>
+        <a @click="handleSignOut" v-if="isLoggenIn">
+          <div class="header__up__site__out">
+            <img src="../../../../public/header/login.svg" alt="">
+            <h1>Выход</h1>
           </div>
         </a>
       </div>
