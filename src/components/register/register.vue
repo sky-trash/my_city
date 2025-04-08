@@ -7,6 +7,8 @@ import { ref } from "vue";
 
 const email = ref("");
 const password = ref("");
+const name = ref("");
+const surname = ref("");
 const router = useRouter()
 
 const register = () => {
@@ -39,21 +41,21 @@ const register = () => {
               v-model="email"
               >
             </div>
-            <!-- <div class="register__content__form__input__name-login__name">
+            <div class="register__content__form__input__name-login__name">
               <h1>Имя</h1>
               <input 
               type="text"
-              name="name"
+              v-model="name"
               >
-            </div> -->
+            </div>
           </div>
-          <!-- <div class="register__content__form__input__email">
+          <div class="register__content__form__input__email">
             <h1>Фамилия</h1>
             <input
             type="text"
-            name="lname"
+            v-model="surname"
             >
-          </div> -->
+          </div>
           <div class="register__content__form__input__passwords">
             <div class="register__content__form__input__passwords__password">
               <h1>Пароль</h1>

@@ -3,6 +3,7 @@
   &__up {
     padding-top: 14px;
     display: flex;
+    justify-content: space-between;
 
     &__city {
       display: flex;
@@ -25,7 +26,7 @@
       }
     }
     &__site {
-      padding: 0 0 0 521px;
+      // padding: 0 0 0 521px;
       display: flex;
 
       &__searth {
@@ -90,6 +91,31 @@
         }
       }
       &__out:hover {
+        h1 {
+          color: var(--button-pink);
+        }
+        img {
+          margin: -3px 0 0;
+        }
+      }
+      &__profile {
+        display: flex;
+        padding-left: 24px;
+
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 120%;
+          color: var(--text-dark-alt);
+
+          padding: 1.5px 0 1.5px 6px;
+        }
+        img {
+          rotate: -90deg;
+        }
+      }
+      &__profile:hover {
         h1 {
           color: var(--button-pink);
         }

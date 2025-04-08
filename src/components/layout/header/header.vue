@@ -5,6 +5,18 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const isLoggenIn = ref(false);
+const isAuth = ref(true);
+
+onMounted(() => {
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isAuth.value = false;
+    } else {
+      isAuth.value = true;
+    }
+  });
+});
 
 let auth;
 onMounted(() => {
@@ -45,10 +57,16 @@ const handleSignOut = () => {
             <h1>Поиск по сайту</h1>
           </div>
         </a>
-        <a href="/Auth">
+        <a href="/Auth" v-if="isAuth">
           <div class="header__up__site__auth">
             <img src="../../../../public/header/login.svg" alt="">
             <h1>Вход</h1>
+          </div>
+        </a>
+        <a href="/Profile" v-if="isLoggenIn">
+          <div class="header__up__site__profile">
+            <img src="../../../../public/header/login.svg" alt="">
+            <h1>Профиль</h1>
           </div>
         </a>
         <a @click="handleSignOut" v-if="isLoggenIn">
