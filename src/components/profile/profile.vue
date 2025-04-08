@@ -1,6 +1,9 @@
 <script setup>
 import Header from '../layout/header/header.vue';
 import Footer from '../layout/footer/footer.vue';
+
+
+
 </script>
 <template>
   <Header />
@@ -20,7 +23,9 @@ import Footer from '../layout/footer/footer.vue';
           <p>qwerty</p>
         </div>
         <div class="profile__description__data__email">
-          <p>qwerty123@gmail.com</p>
+          <p>
+            {{ email }}
+          </p>
         </div>
       </div>
       <div class="profile__description__change">
@@ -43,16 +48,16 @@ import Footer from '../layout/footer/footer.vue';
 
           </div>
           <div class="profile__history__content__display__card">
-            
+
           </div>
           <div class="profile__history__content__display__card">
-            
+
           </div>
           <div class="profile__history__content__display__card">
-            
+
           </div>
           <div class="profile__history__content__display__card">
-            
+
           </div>
         </div>
       </div>

@@ -162,11 +162,14 @@
           font-family: var(--font-family);
           font-weight: 400;
           font-size: 16px;
-          text-decoration: underline;
+          // text-decoration: underline;
           text-decoration-skip-ink: none;
           color: #111;
           width: max-content;
           padding: 27px 153px 0 0;
+        }
+        h1:hover {
+          text-decoration: underline;
         }
         button {
           border: 0;
@@ -184,6 +187,10 @@
             color: #fff;
           }
         }
+        button:hover {
+          background: var(--background-dark);
+          opacity: 1;
+        }
       }
     }
     &__icons {
@@ -194,4 +201,15 @@
       
     }
   }
+}
+
+.errMsg {
+  padding: 10px;
+  margin: 10px 0 0;
+  border-radius: 15px;
+  background: #ff0000;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
 }

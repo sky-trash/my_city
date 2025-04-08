@@ -5,6 +5,7 @@ import { useRouter } from "vue-router";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { ref } from "vue";
 
+const errMsg = ref()
 const email = ref("");
 const password = ref("");
 const name = ref("");
@@ -19,7 +20,20 @@ const register = () => {
   })
   .catch((error) => {
     console.log(error.code);
-    alert(error.message);
+    switch (error.code) {
+        case "auth/invalid-email":
+          errMsg.value = "Неправильный @email"
+          break;
+        case "auth/user-not-found":
+          errMsg.value = "Аккаунт с таким @email уже существует"
+          break;
+        case "auth/wrong-password":
+          errMsg.value = "В пароле должно использоваться 6 символов"
+          break;
+        default:
+          errMsg.value = "Аккаунт с таким @email уже существует"
+          break;
+      }
   })
 };
 </script>
@@ -64,22 +78,23 @@ const register = () => {
               v-model="password"
               >
             </div>
-            <!-- <div class="register__content__form__input__passwords__repassword">
+            <div class="register__content__form__input__passwords__repassword">
               <h1>Повторите пароль</h1>
               <input 
               type="password"
               name="repassword"
               >
-            </div> -->
+            </div>
           </div>
           <div class="register__content__form__input__text">
-            <p>Используйте 8 или более символов, включая буквы, цифры и символы.</p>
+            <p>Используйте 6 или более символов, включая буквы, цифры и символы.</p>
           </div>
         </div>
+        <p class="errMsg" v-if="errMsg">{{ errMsg }}</p>
         <div class="register__content__form__button">
-          <!-- <a href="/Auth">
+          <a href="/Auth">
             <h1>Войти в систему</h1>
-          </a> -->
+          </a>
           <button
           @click="register"
           >
