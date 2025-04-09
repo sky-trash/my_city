@@ -1,7 +1,58 @@
-<script setup>
+<script setup lang="ts">
 import Header from '../layout/header/header.vue';
 import Application from '../application/application.vue';
 import Footer from '../layout/footer/footer.vue';
+
+import { collection, onSnapshot, query } from "firebase/firestore";
+import { apps, db } from "../../main"
+import { ref } from "vue"
+
+
+const news = ref([]);
+
+function withdrawalNews() {
+  const NewsQuery = query(collection(db, 'news'));
+  onSnapshot(NewsQuery, (snapshot) => {
+    news.value = snapshot.docs.map(doc => ({
+      id: doc.id,
+      title: doc.data().title,
+      tag: doc.data().tag,
+      date: doc.data().date,
+      photo: doc.data().photo || [],
+    }));
+  });
+}
+
+withdrawalNews();
+
+// export default {
+
+// data() {
+//   return {
+//     news: [],
+//   };
+// },
+// methods: {
+//   withdrawalNews: function () {
+//     const NewsQuery = query(collection(db, "news"));
+
+//     onSnapshot(NewsQuery, (snapshot) => {
+//       this.news = snapshot.docs.map(doc => {
+//         return {
+//           id: doc.id,
+//           title: doc.data().title,
+//           tag: doc.data().tag,
+//           image: doc.data().image || "",
+//         }
+//       })
+//     })
+//   },
+// },
+// mounted() {
+//   this.withdrawalNews()
+// },
+// }
+
 </script>
 <template>
   <Header />
@@ -22,27 +73,31 @@ import Footer from '../layout/footer/footer.vue';
         <h1>Все события</h1>
       </div>
       <div class="news__events__content">
-        <a href="#">
+        <a 
+        href="#"           
+        v-for="newsis in news"
+        :key="newsis.id"
+        >
           <div class="news__events__content__card">
             <div class="news__events__content__card__icons">
-              <img src="../../../public/news/events/events1.svg" alt="">
+              <img :src="`/imagesFirebase/news/${newsis.photo}`" alt="">
             </div>
             <div class="news__events__content__card__info">
               <div class="news__events__content__card__info__tag">
-                <h1>Происшествия</h1>
+                <h1>{{ newsis.tag }}</h1>
               </div>
               <div class="news__events__content__card__info__text">
-                <h1>В Воронежской области потерпел крушение молет Су-34</h1>
+                <h1>{{ newsis.title }}</h1>
               </div>
               <div class="news__events__content__card__info__time">
-                <p>Вчера, 23:56</p>
+                <p>{{ newsis.date }}</p>
                 <img src="../../../public/news/ear.svg" alt="">
                 <p>546</p>
               </div>
             </div>
           </div>
         </a>
-        <a href="#">
+        <!-- <a href="#">
           <div class="news__events__content__card">
             <div class="news__events__content__card__icons">
               <img src="../../../public/news/events/events2.svg" alt="">
@@ -201,13 +256,13 @@ import Footer from '../layout/footer/footer.vue';
               </div>
             </div>
           </div>
-        </a>
+        </a> -->
       </div>
-      <div class="news__events__button">
+      <!-- <div class="news__events__button">
         <button>
           <h1>Показать еще</h1>
         </button>
-      </div>
+      </div> -->
     </article>
   </main>
   <Application />

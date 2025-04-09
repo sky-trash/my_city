@@ -7,13 +7,14 @@ import { ref } from "vue";
 import { addDoc, collection } from "firebase/firestore";
 import { apps, db } from "../../main"
 
-const errMsg = ref();
-const email = ref("");
-const password = ref("");
-const name = ref("");
-const surname = ref("");
-const router = useRouter();
-const auth = getAuth(apps);
+const errMsg = ref()
+const email = ref("")
+const password = ref("")
+const name = ref("")
+const surname = ref("")
+const router = useRouter()
+const auth = getAuth()
+const UID = auth.lastNotifiedUid
 
 const register = async () => {
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
@@ -21,7 +22,7 @@ const register = async () => {
     name: name.value,
     surname: surname.value,
     role: 'пользователь',
-    // userId: auth.lastNotifiedUid,
+    userId: UID,
   })
 
   .then((data) => {
