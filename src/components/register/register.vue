@@ -4,16 +4,26 @@ import Header from '../layout/header/header.vue';
 import { useRouter } from "vue-router";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { ref } from "vue";
+import { addDoc, collection } from "firebase/firestore";
+import { apps, db } from "../../main"
 
-const errMsg = ref()
+const errMsg = ref();
 const email = ref("");
 const password = ref("");
 const name = ref("");
 const surname = ref("");
-const router = useRouter()
+const router = useRouter();
+const auth = getAuth(apps);
 
-const register = () => {
+const register = async () => {
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+  await addDoc(collection(db, 'users'), {
+    name: name.value,
+    surname: surname.value,
+    role: 'пользователь',
+    // userId: auth.lastNotifiedUid,
+  })
+
   .then((data) => {
     console.log("Регистрация прошла успешно")
     router.push('/Profile')
@@ -61,6 +71,7 @@ const register = () => {
               type="text"
               v-model="name"
               >
+              {{ name }}
             </div>
           </div>
           <div class="register__content__form__input__email">
