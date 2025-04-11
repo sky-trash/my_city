@@ -21,7 +21,7 @@ const register = async () => {
   await addDoc(collection(db, 'users'), {
     name: name.value,
     surname: surname.value,
-    // email: email.value,
+    email: email.value,
     role: 'пользователь',
     userId: UID,
   })

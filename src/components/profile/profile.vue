@@ -12,20 +12,21 @@ const user = ref([])
 
 function withdrawalUser() {
   const userQuery = query(collection(db, 'users'))
-  onSnapshot(userQuery, (snapshot) => {
+  onSnapshot(userQuery, (snapshot) => {    
     user.value = snapshot.docs.map(doc => {
       return {
         id: doc.id,
         name: doc.data().name,
         surname: doc.data().surname,
         email: doc.data().email,
+        userId: doc.data().userId,
       }
     })
   })
 }
 
 function filteredUser() {
-  return user.value.filter(user => user.uid === auth.lastNotifiedUid)
+  return user.value.filter(user => user.userId === auth.lastNotifiedUid)
 }
 
 withdrawalUser();
@@ -40,9 +41,10 @@ withdrawalUser();
       </div>
     </article>
     <article class="profile__description">
+
       <div 
       class="profile__description__data"         
-      v-for="users in filteredUser" 
+      v-for="users in filteredUser()" 
       :key="users.id"
       >
         <div class="profile__description__data__name">
