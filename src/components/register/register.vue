@@ -21,6 +21,7 @@ const register = async () => {
   await addDoc(collection(db, 'users'), {
     name: name.value,
     surname: surname.value,
+    // email: email.value,
     role: 'пользователь',
     userId: UID,
   })
@@ -72,7 +73,6 @@ const register = async () => {
               type="text"
               v-model="name"
               >
-              {{ name }}
             </div>
           </div>
           <div class="register__content__form__input__email">
@@ -90,13 +90,13 @@ const register = async () => {
               v-model="password"
               >
             </div>
-            <div class="register__content__form__input__passwords__repassword">
+            <!-- <div class="register__content__form__input__passwords__repassword">
               <h1>Повторите пароль</h1>
               <input 
               type="password"
               name="repassword"
               >
-            </div>
+            </div> -->
           </div>
           <div class="register__content__form__input__text">
             <p>Используйте 6 или более символов, включая буквы, цифры и символы.</p>

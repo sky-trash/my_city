@@ -1,5 +1,28 @@
 <script setup>
 import Application from '../application/application.vue';
+
+import { collection, onSnapshot, query } from "firebase/firestore";
+import { apps, db } from "../../main"
+import { ref } from "vue"
+
+const news = ref([]);
+const nShow = ref(4); // количество карточек для отображения
+
+function withdrawalNews() {
+  const NewsQuery = query(collection(db, "news"));
+  onSnapshot(NewsQuery, (snapshot) => {
+    news.value = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      title: doc.data().title,
+      tag: doc.data().tag,
+      date: doc.data().date,
+      photo: doc.data().photo || [],
+    }));
+  });
+}
+
+withdrawalNews();
+
 </script>
 <template>
   <main class="main">
@@ -16,7 +39,27 @@ import Application from '../application/application.vue';
         </div>
       </div>
       <div class="main__news__content">
-        <div class="main__news__content__card">
+        <a href="#" v-for="newsis in news" :key="newsis.id">
+          <div class="main__news__content__card">
+            <div class="main__news__content__card__icons">
+              <img :src="`/imagesFirebase/news/${newsis.photo}`" alt="">
+            </div>
+            <div class="main__news__content__card__info">
+              <div class="main__news__content__card__info__tag">
+                <p>{{ newsis.tag }}</p>
+              </div>
+              <div class="main__news__content__card__info__text">
+                <h1>{{ newsis.title }}</h1>
+              </div>
+              <div class="main__news__content__card__info__time">
+                <p>{{ newsis.date }}</p>
+                <img src="../../../public/home/eye.svg" alt="">
+                <p>546</p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- <div class="main__news__content__card">
           <div class="main__news__content__card__icons">
             <img src="../../../public/home/image.svg" alt="">
           </div>
@@ -87,7 +130,7 @@ import Application from '../application/application.vue';
               <p>546</p>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </article>
     <article class="main__cause">

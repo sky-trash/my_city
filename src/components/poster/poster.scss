@@ -98,11 +98,12 @@
 
               border-radius: 20px;
               padding: 8px 10px;
-              width: 71px;
+              // width: 71px;
               height: 28px;
               background: var(--text-dark);
 
               margin: 0 0 0 10px;
+              max-width: max-content;
             }
           }
           &__text {
@@ -115,6 +116,10 @@
               font-size: 32px;
               line-height: 110%;
               color: var(--text-dark);
+              overflow: hidden;
+              text-overflow: ellipsis;
+              // white-space: nowrap;
+              width: 388px;
             }
           }
           &__time {

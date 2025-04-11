@@ -79,6 +79,10 @@
               font-size: 32px;
               line-height: 110%;
               color: var(--text-dark);
+              overflow: hidden;
+              text-overflow: ellipsis;
+              // white-space: nowrap;
+              width: 388px;
             }
           }
           &__time {

@@ -2,7 +2,26 @@
 import Header from '../layout/header/header.vue';
 import Footer from '../layout/footer/footer.vue';
 
+import { collection, onSnapshot, query } from "firebase/firestore";
+import { apps, db } from "../../main"
+import { ref } from "vue"
 
+
+const users = ref([]);
+
+function withdrawalUsers() {
+  const UsersQuery = query(collection(db, 'users'));
+  onSnapshot(UsersQuery, (snapshot) => {
+    users.value = snapshot.docs.map(doc => ({
+      id: doc.id,
+      name: doc.data().name,
+      surname: doc.data().surname,
+      email: doc.data().email,
+    }));
+  });
+}
+
+withdrawalUsers();
 
 </script>
 <template>
@@ -15,16 +34,19 @@ import Footer from '../layout/footer/footer.vue';
       </div>
     </article>
     <article class="profile__description">
-      <div class="profile__description__data">
+      <div 
+      class="profile__description__data"         
+      v-for="user in users"
+      :key="user.id">
         <div class="profile__description__data__name">
-          <h1>Евгений M.</h1>
+          <h1>{{ user.name }} {{ user.surname }}</h1>
         </div>
-        <div class="profile__description__data__login">
+        <!-- <div class="profile__description__data__login">
           <p>qwerty</p>
-        </div>
+        </div> -->
         <div class="profile__description__data__email">
           <p>
-            {{ email }}
+            {{ user.email }}
           </p>
         </div>
       </div>

@@ -2,6 +2,31 @@
 import Header from '../layout/header/header.vue';
 import Application from '../application/application.vue';
 import Footer from '../layout/footer/footer.vue';
+
+import { collection, onSnapshot, query } from "firebase/firestore";
+import { apps, db } from "../../main"
+import { ref } from "vue"
+
+
+const posters = ref([]);
+
+function withdrawalPosters() {
+  const PostersQuery = query(collection(db, 'posters'));
+  onSnapshot(PostersQuery, (snapshot) => {
+    posters.value = snapshot.docs.map(doc => ({
+      id: doc.id,
+      title: doc.data().title,
+      tag: doc.data().tag,
+      price: doc.data().price,
+      date: doc.data().date,
+      address: doc.data().address,
+      photo: doc.data().photo || [],
+    }));
+  });
+}
+
+withdrawalPosters();
+
 </script>
 <template>
   <Header />
@@ -22,26 +47,28 @@ import Footer from '../layout/footer/footer.vue';
         <h1>Все события</h1>
       </div>
       <div class="poster__events__content">
-        <a href="#">
+        <a href="#"           
+        v-for="poster in posters"
+        :key="poster.id">
           <div class="poster__events__content__card">
             <div class="poster__events__content__card__icons">
-              <img src="../../../public/poster/events/events1.svg" alt="">
+              <img :src="`/imagesFirebase/posters/${poster.photo}`" alt="">
             </div>
             <div class="poster__events__content__card__info">
               <div class="poster__events__content__card__info__tag">
-                <h1>Театр</h1>
-                <h2>от 400 ₽</h2>
+                <h1>{{ poster.tag }}</h1>
+                <h2>от {{ poster.price }} ₽</h2>
               </div>
               <div class="poster__events__content__card__info__text">
-                <h1>Тихий Дон</h1>
+                <h1>{{ poster.title }}</h1>
               </div>
               <div class="poster__events__content__card__info__time">
-                <p>4 октября К2, Советская ул., 80</p>
+                <p>{{ poster.date }}, {{  poster.address }}</p>
               </div>
             </div>
           </div>
         </a>
-        <a href="#">
+        <!-- <a href="#">
           <div class="poster__events__content__card">
             <div class="poster__events__content__card__icons">
               <img src="../../../public/poster/events/events2.svg" alt="">
@@ -192,13 +219,13 @@ import Footer from '../layout/footer/footer.vue';
               </div>
             </div>
           </div>
-        </a>
+        </a> -->
       </div>
-      <div class="poster__events__button">
+      <!-- <div class="poster__events__button">
         <button>
           <h1>Показать еще</h1>
         </button>
-      </div>
+      </div> -->
     </article>
     <!-- <article class="poster__calendar">
 

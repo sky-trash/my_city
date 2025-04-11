@@ -47,9 +47,16 @@ withdrawalNews();
 //       })
 //     })
 //   },
+//   data: function () {
+//     return {
+//       nShow: 4, // изначально
+//       nAdd: 2 // сколько добавляем
+//     }
+//   },
 // },
 // mounted() {
-//   this.withdrawalNews()
+//   this.withdrawalNews(),
+//   this.nShow += this.nAdd
 // },
 // }
 
