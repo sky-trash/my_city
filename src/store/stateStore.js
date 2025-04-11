@@ -13,7 +13,7 @@ export const useStateStore = defineStore('stateStore', () => {
     const name = ref('');
     const surname = ref('');
     const news = ref([]);
-    const poster = ref([]);
+    const posters = ref([]);
 
 
     const setEmail = (newEmail) => {
@@ -26,13 +26,13 @@ export const useStateStore = defineStore('stateStore', () => {
         name.value = newName;
     };
     const setSurName = (newSurName) => {
-        name.value = newSurName;
+        surname.value = newSurName;
     };
     const setNews = (newNews) => {
-        name.value = setNews;
+        news.value = newNews;
     };
     const setPosters = (newPosters) => {
-        name.value = setPosters;
+        posters.value = newPosters;
     };
 
 
@@ -45,6 +45,7 @@ export const useStateStore = defineStore('stateStore', () => {
       name,
       surname,
       news,
+      posters,
       setEmail,
       setPassword,
       setName,

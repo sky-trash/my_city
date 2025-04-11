@@ -5,24 +5,30 @@ import Footer from '../layout/footer/footer.vue';
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { apps, db } from "../../main"
 import { ref } from "vue"
+import { getAuth } from 'firebase/auth';
 
+const auth = getAuth()
+const user = ref([])
 
-const users = ref([]);
-
-function withdrawalUsers() {
-  const UsersQuery = query(collection(db, 'users'));
-  onSnapshot(UsersQuery, (snapshot) => {
-    users.value = snapshot.docs.map(doc => ({
-      id: doc.id,
-      name: doc.data().name,
-      surname: doc.data().surname,
-      email: doc.data().email,
-    }));
-  });
+function withdrawalUser() {
+  const userQuery = query(collection(db, 'users'))
+  onSnapshot(userQuery, (snapshot) => {
+    user.value = snapshot.docs.map(doc => {
+      return {
+        id: doc.id,
+        name: doc.data().name,
+        surname: doc.data().surname,
+        email: doc.data().email,
+      }
+    })
+  })
 }
 
-withdrawalUsers();
+function filteredUser() {
+  return user.value.filter(user => user.uid === auth.lastNotifiedUid)
+}
 
+withdrawalUser();
 </script>
 <template>
   <Header />
@@ -36,17 +42,18 @@ withdrawalUsers();
     <article class="profile__description">
       <div 
       class="profile__description__data"         
-      v-for="user in users"
-      :key="user.id">
+      v-for="users in filteredUser" 
+      :key="users.id"
+      >
         <div class="profile__description__data__name">
-          <h1>{{ user.name }} {{ user.surname }}</h1>
+          <h1>{{ users.name }} {{ users.surname }}</h1>
         </div>
         <!-- <div class="profile__description__data__login">
           <p>qwerty</p>
         </div> -->
         <div class="profile__description__data__email">
           <p>
-            {{ user.email }}
+            {{ users.email }}
           </p>
         </div>
       </div>
