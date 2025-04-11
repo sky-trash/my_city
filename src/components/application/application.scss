@@ -94,3 +94,15 @@
     }
   }
 }
+
+.errMsg {
+  padding: 10px;
+  margin: 20px 0 0 500px;
+  border-radius: 15px;
+  background-color: rgb(99, 201, 99);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  color: #000000;
+  width: 167px;
+}
