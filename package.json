@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
+    "express": "^5.1.0",
     "firebase": "^11.6.0",
     "pinia": "^3.0.1",
     "vue": "^3.5.13",
