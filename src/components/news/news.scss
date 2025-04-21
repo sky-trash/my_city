@@ -153,6 +153,7 @@
         width: 1224px;
         height: 41px;
         background: var(--button-black);
+        border: none;
       
         h1 {
           font-family: var(--font-family);
@@ -161,6 +162,14 @@
           color: var(--text-white);
           display: flex;
           justify-content: center;
+        }
+      }
+      button:hover {
+        background: var(--text-white);
+        border: 1px dashed var(--button-black);
+
+        h1 {
+          color: var(--button-black);
         }
       }
     }

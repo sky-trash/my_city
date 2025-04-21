@@ -49,7 +49,7 @@
             color: rgba(143, 143, 143, 1);
           }
         }
-        &__buuton {
+        &__button {
           padding: 35px 0 0;
 
           button {
@@ -60,7 +60,7 @@
             height: 41px;
             background: var(--button-primary);
 
-            h1 {
+            span {
               font-family: var(--font-family);
               font-weight: 400;
               font-size: 16px;
@@ -71,7 +71,7 @@
             border: 1px dashed var(--button-primary);
             background-color: var(--text-white);
 
-            h1 {
+            span {
               color: var(--button-primary);
             }
           }

@@ -74,7 +74,7 @@ onMounted(() => {
         <div v-for="item in news" :key="item.id" class="news-card" @click="goToNews(item.id)">
           <div class="main__news__content__card">
             <div class="main__news__content__card__icons">
-              <img :src="item.photo" :alt="item.title">
+              <img :src="item.photo" alt="">
             </div>
             <div class="main__news__content__card__info">
               <div class="main__news__content__card__info__tag">
