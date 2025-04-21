@@ -46,7 +46,7 @@
           <img src="../../../public/attaraction/events6.svg" alt="">
           <p>Храм Казанской иконы Божией Матери</p>
         </div>
-        <div class="attaraction__events__content__card">
+        <!-- <div class="attaraction__events__content__card">
           <img src="../../../public/attaraction/events1.svg" alt="">
           <p>Городской парк культуры и отдыха</p>
         </div>
@@ -69,7 +69,7 @@
         <div class="attaraction__events__content__card">
           <img src="../../../public/attaraction/events6.svg" alt="">
           <p>Храм Казанской иконы Божией Матери</p>
-        </div>
+        </div> -->
       </div>
     </article>
   </main>
