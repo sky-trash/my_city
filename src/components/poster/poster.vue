@@ -169,4 +169,20 @@ onMounted(() => {
 
 <style scoped>
 @import "./poster.scss";
+
+.poster__events__content__card {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.poster__events__content__card:hover {
+  transform: translateY(-5px);
+}
+
+.poster__events__content__card__icons img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
 </style>
