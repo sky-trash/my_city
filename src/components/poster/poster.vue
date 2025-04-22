@@ -1,48 +1,83 @@
-<script setup>
-import { onMounted, onUnmounted, ref } from "vue";
-import { collection, onSnapshot, query } from "firebase/firestore";
+<script setup lang="ts">
+import Header from "../layout/header/header.vue";
+import Application from "../application/application.vue";
+import Footer from "../layout/footer/footer.vue";
+import { collection, onSnapshot, query, orderBy, limit } from "firebase/firestore";
 import { db } from "../../main";
-import Header from '../layout/header/header.vue';
-import Application from '../application/application.vue';
-import Footer from '../layout/footer/footer.vue';
+import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 
-const posters = ref([]);
+interface PostersItem {
+  id: string;
+  title: string;
+  tag: string;
+  price: string;
+  date: string;
+  address: string;
+  photo: string;
+}
+
+const router = useRouter();
+const posters = ref<PostersItem[]>([]);
 const isLoading = ref(true);
-const error = ref(null);
-let unsubscribe = null;
+const error = ref<string | null>(null);
 
-const fetchPosters = () => {
+// Функция для форматирования даты
+const formatDate = (dateString: string): string => {
+  if (!dateString) return "";
   try {
-    const postersQuery = query(collection(db, 'posters'));
-    unsubscribe = onSnapshot(postersQuery, (snapshot) => {
-      posters.value = snapshot.docs.map(doc => ({
-        id: doc.id,
-        title: doc.data().title || 'Без названия',
-        tag: doc.data().tag || 'Другое',
-        price: doc.data().price || 0,
-        date: doc.data().date || 'Дата не указана',
-        address: doc.data().address || 'Адрес не указан',
-        photo: doc.data().photo || 'default.jpg',
-      }));
-      isLoading.value = false;
-    }, (err) => {
-      error.value = 'Ошибка загрузки мероприятий';
-      isLoading.value = false;
+    const date = new Date(dateString);
+    return date.toLocaleDateString("ru-RU", {
+      day: "numeric",
+      month: "long",
+      // hour: '2-digit',
+      // minute: '2-digit'
     });
-  } catch (err) {
-    error.value = 'Неожиданная ошибка';
-    isLoading.value = false;
+  } catch {
+    return dateString;
   }
 };
 
-onMounted(() => {
-  fetchPosters();
-});
+// Загрузка афиши
+const fetchPosters = () => {
+  const postersQuery = query(collection(db, "posters"), orderBy("date", "desc"));
 
-onUnmounted(() => {
-  if (unsubscribe) {
-    unsubscribe();
-  }
+  const unsubscribe = onSnapshot(
+    postersQuery,
+    (snapshot) => {
+      posters.value = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        title: doc.data().title || "Без названия",
+        tag: doc.data().tag || "Другое",
+        price: doc.data().price || 0,
+        date: doc.data().date || "Дата не указана",
+        address: doc.data().address || "Адрес не указан",
+        photo: doc.data().photo || "default.jpg",
+      }));
+      isLoading.value = false;
+    },
+    (err) => {
+      error.value = `Ошибка загрузки афиши: ${err.message}`;
+      isLoading.value = false;
+      console.error("Ошибка загрузки афиши:", err);
+    }
+  );
+
+  return unsubscribe;
+};
+
+// Переход к детальной странице новости
+const goToPostersDetail = (id: string) => {
+  router.push(`/Posters/${id}`);
+};
+
+onMounted(() => {
+  const unsubscribe = fetchPosters();
+
+  // Отписка при размонтировании компонента
+  return () => {
+    if (unsubscribe) unsubscribe();
+  };
 });
 </script>
 
@@ -53,7 +88,7 @@ onUnmounted(() => {
       <router-link to="/">
         <div class="poster__layout__home">
           <h1>Главная</h1>
-          <img src="/poster/right.svg" alt="">
+          <img src="/poster/right.svg" alt="" />
         </div>
       </router-link>
       <div class="poster__layout__text">
@@ -97,19 +132,19 @@ onUnmounted(() => {
       </div>
 
       <div v-else class="poster__events__content">
-        <router-link
+        <div
           v-for="poster in posters"
           :key="poster.id"
-          :to="`/event/${poster.id}`"
+          @click="goToPostersDetail(poster.id)"
           class="poster__events__content__link"
         >
           <div class="poster__events__content__card">
             <div class="poster__events__content__card__icons">
               <img
-                :src="`/imagesFirebase/posters/${poster.photo}`"
-                :alt="poster.title"
+              :src="`/imagesFirebase/posters/${poster.photo}`"
                 loading="lazy"
-              >
+                @error="(e) => e.target.src = '/images/default-news.jpg'"
+              />
             </div>
             <div class="poster__events__content__card__info">
               <div class="poster__events__content__card__info__tag">
@@ -124,7 +159,7 @@ onUnmounted(() => {
               </div>
             </div>
           </div>
-        </router-link>
+        </div>
       </div>
     </article>
   </main>

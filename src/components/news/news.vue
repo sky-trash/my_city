@@ -13,7 +13,7 @@ interface NewsItem {
   tag: string;
   date: string;
   photo: string;
-  views?: number;
+  views: number;
 }
 
 const router = useRouter();
