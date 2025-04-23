@@ -1,0 +1,183 @@
+.poster {
+
+  &__container {
+
+    &__header {
+      display: flex;
+      padding: 60px 0 30px;
+    
+      .back-link {
+        display: flex;
+
+        h1 {
+          font-family: var(--font-family);
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 120%;
+          letter-spacing: 0.01em;
+          color: var(--text-link);
+        }
+        img {
+          width: 16px;
+          height: 16px;
+          margin: 1px 4px 1px 4px;
+        }
+      }
+      h1 {
+        font-family: var(--font-family);
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 120%;
+        letter-spacing: 0.01em;
+        color: var(--text-link);
+      }
+    }
+    &__content {
+      display: flex;
+
+      &__info {
+        margin-right: 30px;
+        padding: 30px 25px 30px 30px;
+        border-radius: 4px;
+        width: 387px;
+        height: 605px;
+        background: var(--background-dark);
+
+        .info-block {
+
+          &__tag {
+            border: 1px solid var(--background-white);
+            border-radius: 20px;
+            padding: 8px 10px;
+            height: 28px;
+            max-width: max-content;
+
+            p {
+              font-family: var(--font-family);
+              font-weight: 600;
+              font-size: 12px;
+              line-height: 100%;
+              text-transform: uppercase;
+              color: var(--background-white);
+            }
+          }
+          &__title {
+            padding-top: 18px;
+
+            p {
+              font-family: var(--second-family);
+              font-weight: 900;
+              font-size: 32px;
+              line-height: 100%;
+              color: var(--background-white);
+            }
+          }
+          &__date {
+            padding-top: 10px;
+
+            p {
+              font-family: var(--font-family);
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 150%;
+              color: var(--background-white);
+            }
+          }
+        }
+        &__block {
+          margin: 102px 0 30px;
+
+          .info-block {
+
+            &__home {
+
+              h1 {
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 100%;
+                text-transform: uppercase;
+                color: var(--text-gray-alt);
+              }
+              p {
+                padding: 4px 0 0;
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 150%;
+                color: var(--text-white);
+              }
+            }
+            &__duration {
+              padding: 20px 0;
+              
+              h1 {
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 100%;
+                text-transform: uppercase;
+                color: var(--text-gray-alt);
+              }
+              p {
+                padding: 4px 0 0;
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 150%;
+                color: var(--text-white);
+              }
+            }
+            &__age {
+              padding: 0 0 20px;
+              
+              h1 {
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 100%;
+                text-transform: uppercase;
+                color: var(--text-gray-alt);
+              }
+              p {
+                padding: 4px 0 0;
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 150%;
+                color: var(--text-white);
+              }
+            }
+            &__price {
+              
+              h1 {
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 100%;
+                text-transform: uppercase;
+                color: var(--text-gray-alt);
+              }
+              p {
+                padding: 4px 0 0;
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 150%;
+                color: var(--text-white);
+              }
+            }
+          }
+        }
+      }
+      &__image {
+
+        img {
+          border-radius: 4px;
+          width: 807px;
+          height: 605px;
+        }
+      }
+    }
+  }
+}
