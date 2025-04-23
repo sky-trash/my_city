@@ -31,6 +31,7 @@ interface PosterDetail {
   tag: string;
   price: string;
   date: string;
+  time: string;
   address: string;
   photo: string;
   description: string;
@@ -49,8 +50,8 @@ const formatDate = (dateString: string): string => {
       day: "numeric",
       month: "long",
       year: "numeric",
-      hour: '2-digit',
-      minute: '2-digit'
+      // hour: '2-digit',
+      // minute: '2-digit'
     });
   } catch {
     return dateString;
@@ -75,6 +76,7 @@ onMounted(async () => {
         tag: data?.tag || "Другое",
         price: data?.price || "Цена не указана",
         date: data?.date || "Дата не указана",
+        time: data?.time || "Время не указано",
         address: data?.address || "Адрес не указан",
         photo: data?.photo || "default.jpg",
         description: data?.description || "Описание отсутствует"
@@ -174,7 +176,7 @@ const buyTicket = async () => {
         <div class="poster-info">
           <div class="info-block">
             <h3>Дата и время</h3>
-            <p>{{ formatDate(poster.date) }}</p>
+            <p>{{ formatDate(poster.date) }} {{ poster.time }}</p>
           </div>
 
           <div class="info-block">
