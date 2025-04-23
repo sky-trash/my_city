@@ -94,7 +94,7 @@ const handleSignOut = () => {
           <img src="../../../../public/header/active-elip.svg" alt="">
           <h1>Городские новости</h1>
         </a>
-        <a href="/Poster">
+        <a href="/Posters">
           <img src="../../../../public/header/active-elip.svg" alt="">
           <h1>Афиша</h1>
         </a>

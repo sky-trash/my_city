@@ -37,12 +37,21 @@ const router = createRouter({
       }
     },
     {
-      path: "/poster",
-      name: "poster",
+      path: "/Posters",
+      name: "posters",
       component: () => import("../pages/Poster.vue"),
       meta: {
         title: "Афиша"
       }
+    },
+    {
+      path: "/posters/:id",
+      name: "PosterDetail",
+      component: () => import("../pages/PosterDetail.vue"),
+      meta: {
+        title: "Детали мероприятия"
+      },
+      props: true  // Передаем параметр маршрута как props
     },
     {
       path: "/news",

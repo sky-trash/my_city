@@ -66,7 +66,7 @@ const fetchPosters = () => {
   return unsubscribe;
 };
 
-// Переход к детальной странице новости
+// Переход к детальной странице афиши
 const goToPostersDetail = (id: string) => {
   router.push(`/Posters/${id}`);
 };
