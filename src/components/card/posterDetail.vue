@@ -52,7 +52,7 @@ const formatDate = (dateString: string): string => {
     return date.toLocaleDateString("ru-RU", {
       day: "numeric",
       month: "long",
-      // year: "numeric",
+      year: "numeric",
       // hour: '2-digit',
       // minute: '2-digit'
     });
@@ -149,13 +149,12 @@ const buyTicket = () => {
           <h1>Главная</h1>
           <img src="../../../public/poster/right.svg" alt="">
         </router-link>
-        <router-link to="/poster" class="back-link">
+        <router-link to="/posters" class="back-link">
           <h1>Афиша</h1>
           <img src="../../../public/poster/right.svg" alt="">
         </router-link>
         <h1>{{ poster.title }}</h1>
       </div>
-
       <div class="poster__container__content">
         <div class="poster__container__content__info">
 
@@ -168,7 +167,7 @@ const buyTicket = () => {
           </div>
 
           <div class="info-block__date">
-            <p>{{ formatDate(poster.date) }}, {{ poster.time }}</p>
+            <p>{{ poster.date }}, {{ poster.time }}</p>
           </div>
 
           <div class="poster__container__content__info__block">
@@ -197,7 +196,7 @@ const buyTicket = () => {
 
           <!-- Кнопка для открытия модального окна -->
           <button @click="showModal = true" class="buy-button">
-            Купить билет
+            <p>Купить билет</p>
           </button>
 
           <!-- Модальное окно -->
@@ -218,17 +217,17 @@ const buyTicket = () => {
                 </div>
 
                 <div class="form-group">
-                  <label>Ваше имя:</label>
+                  <p>Ваше имя:</p>
                   <input v-model="buyerName" type="text" required class="form-control">
                 </div>
 
                 <div class="form-group">
-                  <label>Email:</label>
+                  <p>Email:</p>
                   <input v-model="buyerEmail" type="email" required class="form-control">
                 </div>
 
                 <div class="form-group">
-                  <label>Телефон:</label>
+                  <p>Телефон:</p>
                   <input v-model="buyerPhone" type="tel" required class="form-control" placeholder="+7 (XXX) XXX-XX-XX">
                 </div>
 
@@ -236,18 +235,18 @@ const buyTicket = () => {
                   {{ purchaseError }}
                 </div>
 
-                <button @click="buyTicket" :disabled="isPurchasing" class="buy-button">
-                  <span v-if="isPurchasing">Обработка...</span>
-                  <span v-else>Оформить заказ</span>
+                <button @click="buyTicket" :disabled="isPurchasing" class="buy-button-ticket">
+                  <p v-if="isPurchasing">Обработка...</p>
+                  <p v-else>Оформить заказ</p>
                 </button>
               </div>
 
               <div v-else class="success-message">
                 <h3>Спасибо за покупку!</h3>
-                <p>Ваш заказ на {{ ticketCount }} билет(а) оформлен.</p>
+                <p>Ваш заказ на {{ ticketCount }} билет(а, ов) оформлен.</p>
                 <p>Наш менеджер свяжется с вами в ближайшее время для подтверждения.</p>
                 <button @click="resetForm" class="buy-button">
-                  Купить еще билеты
+                  <p>Купить еще билеты</p>
                 </button>
               </div>
             </div>
@@ -257,6 +256,10 @@ const buyTicket = () => {
             <img :src="`/imagesFirebase/posters/${poster.photo}`" :alt="poster.title"
               @error="(e) => e.target.src = '/images/default-news.jpg'" />
           </div>
+      </div>
+      <div class="poster__container__description">
+        <h1>О событии</h1>
+        <p>{{ poster.description }}</p>
       </div>
     </div>
   </main>
