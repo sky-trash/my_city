@@ -295,6 +295,26 @@
             }
           }
         }
+        .success-message {
+
+          h3 {
+            font-family: var(--second-family);
+            font-weight: 900;
+            font-size: 32px;
+            line-height: 100%;
+            color: var(--text-header);
+          }
+          h2 {
+            font-family: var(--font-family);
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 110%;
+            color: var(--text-dark);
+
+            padding: 4px 0;
+            margin: 8px 0;
+          }
+        }
       }
       &__image {
 
