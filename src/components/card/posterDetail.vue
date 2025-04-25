@@ -47,18 +47,15 @@ interface Purchase {
   ticketId?: string;
 }
 
-// Router and state
 const route = useRoute();
 const router = useRouter();
 const poster = ref<PosterDetail | null>(null);
 const isLoading = ref(true);
 const error = ref<string | null>(null);
 
-// Auth state
 const isAuthenticated = ref(false);
 const currentUser = ref<any>(null);
 
-// Purchase form
 const showModal = ref(false);
 const showAuthModal = ref(false);
 const purchaseSuccess = ref(false);
@@ -69,7 +66,6 @@ const buyerName = ref('');
 const buyerEmail = ref('');
 const buyerPhone = ref('');
 
-// Helpers
 const formatPhone = (phone: string) => phone.replace(/\D/g, '');
 
 const formatDate = (dateString: string): string => {
@@ -95,7 +91,6 @@ const generateTicketId = () => {
   return `${currentUser.value.uid.slice(0, 8)}-${Date.now().toString(36)}-${Math.random().toString(36).substr(2, 5)}`;
 };
 
-// Lifecycle hooks
 onMounted(() => {
   onAuthStateChanged(auth, (user) => {
     isAuthenticated.value = !!user;
@@ -109,7 +104,6 @@ onMounted(() => {
   loadPoster();
 });
 
-// Data loading
 const loadPoster = async () => {
   try {
     if (!route.params.id || typeof route.params.id !== 'string') {
@@ -146,7 +140,6 @@ const loadPoster = async () => {
   }
 };
 
-// Modal handlers
 const goToAuth = () => router.push(`/auth?redirect=${encodeURIComponent(route.fullPath)}`);
 
 const openModal = () => {
@@ -171,7 +164,6 @@ const resetForm = () => {
   purchaseError.value = '';
 };
 
-// Purchase logic
 const buyTicket = async () => {
   if (!poster.value || !currentUser.value) {
     purchaseError.value = 'Ошибка: данные не загружены';
@@ -230,10 +222,8 @@ const buyTicket = async () => {
   }
 };
 
-// Computed
 const totalPrice = computed(() => poster.value ? poster.value.price * ticketCount.value : 0);
 
-// Watchers
 watch(buyerPhone, (newVal) => {
   buyerPhone.value = formatPhone(newVal);
 });
@@ -353,8 +343,8 @@ watch(buyerPhone, (newVal) => {
                 <p>Ваш заказ на {{ ticketCount }} билет(а) оформлен.</p>
                 <p>Наш менеджер свяжется с вами для подтверждения.</p>
                 <p>Номер заказа: {{ generateTicketId() }}</p>
-                <button @click="closeModal" class="close-button">
-                  Закрыть
+                <button @click="closeModal" class="buy-button-ticket">
+                  <p>Закрыть</p>
                 </button>
               </div>
             </div>

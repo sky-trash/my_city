@@ -285,6 +285,12 @@
               font-size: 16px;
               color: var(--background-white);
             }
+            span {
+              font-family: var(--font-family);
+              font-weight: 400;
+              font-size: 16px;
+              color: var(--background-white);
+            }
           }        
           .buy-button-ticket:hover {
             border: 1px dashed var(--button-primary);
@@ -293,18 +299,23 @@
             p {
               color: var(--button-primary);
             }
+            span {
+              color: var(--button-primary);
+            }
           }
         }
         .success-message {
 
           h3 {
+            padding: 5px 0 0;
+
             font-family: var(--second-family);
             font-weight: 900;
             font-size: 32px;
             line-height: 100%;
             color: var(--text-header);
           }
-          h2 {
+          p {
             font-family: var(--font-family);
             font-weight: 500;
             font-size: 20px;
@@ -313,6 +324,38 @@
 
             padding: 4px 0;
             margin: 8px 0;
+          }
+          .buy-button-ticket {
+            margin: 10px 0;
+            border-radius: 10px;
+            border: none;
+            width: 150px;
+            height: 41px;
+            background: var(--button-primary);
+  
+            p {
+              font-family: var(--font-family);
+              font-weight: 400;
+              font-size: 16px;
+              color: var(--background-white);
+            }
+            span {
+              font-family: var(--font-family);
+              font-weight: 400;
+              font-size: 16px;
+              color: var(--background-white);
+            }
+          }        
+          .buy-button-ticket:hover {
+            border: 1px dashed var(--button-primary);
+            background: var(--background-white);
+  
+            p {
+              color: var(--button-primary);
+            }
+            span {
+              color: var(--button-primary);
+            }
           }
         }
       }
