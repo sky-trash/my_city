@@ -40,76 +40,76 @@ const handleSignOut = () => {
   <header class="header">
     <article class="header__up">
       <div class="header__up__city">
-        <a href="/Directory">
+        <router-link to="/Directory">
           <h1>Работа в Борисоглебске</h1>
-        </a>
-        <a href="/Directory">
+        </router-link>
+        <router-link to="/Directory">
           <h1>Жилье в Борисоглебске</h1>
-        </a>
-        <a href="/Contact">
+        </router-link>
+        <router-link to="/Contact">
           <h1>Наши контакты</h1>
-        </a>
+        </router-link>
       </div>
       <div class="header__up__site">
-        <a href="/Directory">
+        <router-link to="/Directory">
           <div class="header__up__site__searth">
             <img src="../../../../public/header/search.svg" alt="">
             <h1>Поиск по сайту</h1>
           </div>
-        </a>
-        <a href="/Auth" v-if="isAuth">
+        </router-link>
+        <router-link to="/Auth" v-if="isAuth">
           <div class="header__up__site__auth">
             <img src="../../../../public/header/login.svg" alt="">
             <h1>Вход</h1>
           </div>
-        </a>
-        <a href="/Profile" v-if="isLoggenIn">
+        </router-link>
+        <router-link to="/Profile" v-if="isLoggenIn">
           <div class="header__up__site__profile">
             <img src="../../../../public/header/login.svg" alt="">
             <h1>Профиль</h1>
           </div>
-        </a>
-        <a @click="handleSignOut" v-if="isLoggenIn">
+        </router-link>
+        <router-link @click="handleSignOut" v-if="isLoggenIn">
           <div class="header__up__site__out">
             <img src="../../../../public/header/login.svg" alt="">
             <h1>Выход</h1>
           </div>
-        </a>
+        </router-link>
       </div>
     </article>
-    <a href="/">
+    <router-link to="/">
       <article class="header__logo">
         <img src="../../../../public/header/logo.svg" alt="">
       </article>
-    </a>
+    </router-link>
     <article class="header__navbar">
       <div class="header__navbar__menu">
-        <a href="/">
+        <router-link to="/">
           <img src="../../../../public/header/burger.svg" alt="">
           <h1>Меню</h1>
-        </a>
+        </router-link>
       </div>
       <div class="header__navbar__navigation">
-        <a href="/News">
+        <router-link to="/News">
           <img src="../../../../public/header/active-elip.svg" alt="">
           <h1>Городские новости</h1>
-        </a>
-        <a href="/Posters">
+        </router-link>
+        <router-link to="/Posters">
           <img src="../../../../public/header/active-elip.svg" alt="">
           <h1>Афиша</h1>
-        </a>
-        <!-- <a href="/City">
+        </router-link>
+        <!-- <router-link to="/City">
           <img src="../../../../public/header/active-elip.svg" alt="">
           <h1>Родной город</h1>
-        </a> -->
-        <a href="/Directory">
+        </router-link> -->
+        <router-link to="/Directory">
           <img src="../../../../public/header/active-elip.svg" alt="">
           <h1>Справочник</h1>
-        </a>
-        <a href="/Attraction">
+        </router-link>
+        <router-link to="/Attraction">
           <img src="../../../../public/header/active-elip.svg" alt="">
           <h1>Достопремичательности</h1>
-        </a>
+        </router-link>
       </div>
     </article>
   </header>

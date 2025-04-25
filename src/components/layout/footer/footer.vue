@@ -23,29 +23,29 @@ const copyUrlFallback = () => {
   <footer class="footer">
     <article class="footer__logo">
       <div class="gooter__logo__icons">
-        <a href="/">
+        <router-link to="/">
           <img src="../../../../public/footer/logo.svg" alt="">
-        </a>
+        </router-link>
       </div>
       <div class="footer__logo__navbar">
-        <a href="/Attraction">
+        <router-link to="/Attraction">
           <h1>Достопремичательности</h1>
-        </a>
-        <a href="/Poster">
+        </router-link>
+        <router-link to="/Poster">
           <h1>Афиша</h1>
-        </a>
-        <a href="/News">
+        </router-link>
+        <router-link to="/News">
           <h1>Родной город</h1>
-        </a>
-        <a href="/Directory">
+        </router-link>
+        <router-link to="/Directory">
           <h1>Жильё</h1>
-        </a>
-        <a href="/Directory">
+        </router-link>
+        <router-link to="/Directory">
           <h1>Работа</h1>
-        </a>
-        <a href="/Directory">
+        </router-link>
+        <router-link to="/Directory">
           <h1>Справочник</h1>
-        </a>
+        </router-link>
       </div>
     </article>
     <article class="footer__contact">
@@ -55,25 +55,25 @@ const copyUrlFallback = () => {
       <div class="footer__contact__text-social">
         <div class="footer__contact__text-social_text">
           <div class="footer__contact__text-social_text_left">
-            <p>Телефон: <a href="/Contact">+7 996 216-21-47</a></p>
-            <p>Email: <a href="/Contact">bskone@gmail.com</a></p>
-            <p>Адрес: <a href="/Contact">г. Борисоглебск, ул. Матросовская, д. 127</a></p>
+            <p>Телефон: <router-link to="/Contact">+7 996 216-21-47</router-link></p>
+            <p>Email: <router-link to="/Contact">bskone@gmail.com</router-link></p>
+            <p>Адрес: <router-link to="/Contact">г. Борисоглебск, ул. Матросовская, д. 127</router-link></p>
           </div>
           <div class="footer__contact__text-social_text_right">
-            <p>Гл. редактор: <a href="/Contact">Матвеев Е.И.</a></p>
-            <p>Разработчик:<a href="/Contact">Матвеев Е.И.</a></p>
+            <p>Гл. редактор: <router-link to="/Contact">Матвеев Е.И.</router-link></p>
+            <p>Разработчик:<router-link to="/Contact">Матвеев Е.И.</router-link></p>
           </div>
         </div>
         <div class="footer__contact__text-social_social">
-          <a href="https://web.telegram.org/a/">
+          <router-link to="https://web.telegram.org/a/">
             <img src="../../../../public/footer/Telegram.svg" alt="">
-          </a>
-          <a href="https://vk.com/">
+          </router-link>
+          <router-link to="https://vk.com/">
             <img src="../../../../public/footer/VK.svg" alt="">
-          </a>
-          <a href="https://ok.ru/">
+          </router-link>
+          <router-link to="https://ok.ru/">
             <img src="../../../../public/footer/Odnoklasniki.svg" alt="">
-          </a>
+          </router-link>
           <a href="#" @click.prevent="copyUrlFallback">
             <img src="../../../../public/footer/link.svg" alt="">
           </a>

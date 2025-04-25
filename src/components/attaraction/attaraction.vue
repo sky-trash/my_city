@@ -8,10 +8,10 @@
   <main class="attaraction">
     <article class="attaraction__layout">
       <div class="attaraction__layout__home">
-        <a href="/">
+        <router-link to="/">
           <h1>Главная</h1>
           <img src="../../../public/attaraction/right.svg" alt="">
-        </a>
+        </router-link>
       </div>
       <div class="attaraction__layout__text">
         <h1>Достопремичательности</h1>

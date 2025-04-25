@@ -96,10 +96,10 @@ onMounted(() => {
           <h1>Все новости</h1>
         </div>
         <div class="main__news__navbar__more">
-          <a href="/News">
+          <router-link to="/News">
             <h1>Подробнее</h1>
             <img src="../../../public/home/right.svg" alt="">
-          </a>
+          </router-link>
         </div>
       </div>
         <!-- Состояние загрузки -->

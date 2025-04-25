@@ -203,7 +203,7 @@ import Header from '../layout/header/header.vue';
         </div>
         <div class="reasons__events__five__content">
           <div class="reasons__events__five__content__description">
-            <img src="../../../public/reasons/events4/events4.svg" alt="">
+            <img src="../../../public/reasons/events5/events5.svg" alt="">
             <div class="reasons__events__five__content__description__up">
               <h1>Разнообразные варианты жилья</h1>
               <p>Борисоглебск предлагает разнообразные варианты жилья, включая новостройки и частные дома с участками. На данный момент активно ведётся застройка новых жилищных комплексов. Стоимость жизни в городе более доступна, чем в крупных мегаполисах, что делает его ещё привлекательнее.</p>

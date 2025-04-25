@@ -7,12 +7,12 @@ import Footer from '../layout/footer/footer.vue';
   <Header />
   <main class="directory">
     <article class="directory__layout">
-      <a href="/">
+      <router-link to="/">
         <div class="directory__layout__home">
           <h1>Главная</h1>
           <img src="../../../public/directory/right.svg" alt="">
         </div>
-      </a>
+      </router-link>
       <div class="directory__layout__text">
         <h1>Справочник</h1>
       </div>

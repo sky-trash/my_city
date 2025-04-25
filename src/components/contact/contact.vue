@@ -7,10 +7,10 @@ import Footer from '../layout/footer/footer.vue';
   <Header />
   <main class="contact">
     <article class="contact__layout">
-      <a href="/">
+      <router-link to="/">
         <h1>Главная</h1>
         <img src="../../../public/contact/right.svg" alt="">
-      </a>
+      </router-link>
     </article>
     <article class="contact__content">
       <div class="contact__content__text">
