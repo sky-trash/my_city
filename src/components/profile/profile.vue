@@ -147,7 +147,7 @@ onUnmounted(() => {
           </template>
 
           <div class="profile__description__change">
-            <router-link to="/Profile/edit">
+            <router-link :to="{ name: 'profileEdit', params: { id: userData?.id } }">
               <button>
                 <h1>Изменить</h1>
               </button>

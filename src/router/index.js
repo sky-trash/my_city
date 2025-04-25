@@ -37,6 +37,16 @@ const router = createRouter({
       }
     },
     {
+      path: "/profile/edit/:id",
+      name: "profileEdit",
+      component: () => import("../pages/ProfileEdit.vue"),
+      meta: {
+        requiresAuth: true,
+        title: "Редактировать профиль"
+      },
+      props: true  // Передаем параметр маршрута как props
+    },
+    {
       path: "/Posters",
       name: "posters",
       component: () => import("../pages/Poster.vue"),

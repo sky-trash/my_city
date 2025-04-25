@@ -76,6 +76,14 @@
           color: #fff;
         }
       }
+      button:hover {
+        background: #fff;
+        border: 1px dashed #000;
+
+        h1 {
+          color: #000;
+        }
+      }
     }
   }
   // &__line {
