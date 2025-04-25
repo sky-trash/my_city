@@ -39,8 +39,9 @@ input:disabled {
 }
 
 small {
+  padding: 4px 0 0;
   color: #666;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .actions {
@@ -58,6 +59,10 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background-color: #307456;
+}
+
 button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
@@ -69,6 +74,11 @@ button:disabled {
   text-decoration: none;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.cancel-btn:hover {
+  background-color: #000;
+  color: #fff;
 }
 
 .loading, .error {

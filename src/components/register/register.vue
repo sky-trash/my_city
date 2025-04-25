@@ -58,7 +58,7 @@ const register = async () => {
 
     switch (error.code) {
       case "auth/invalid-email":
-        errMsg.value = "Некорректный email";
+        errMsg.value = "Некоректный email";
         break;
       case "auth/email-already-in-use":
         errMsg.value = "Аккаунт с таким email уже существует";
