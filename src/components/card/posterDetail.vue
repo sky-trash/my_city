@@ -173,11 +173,12 @@ const resetForm = () => {
 
 // Purchase logic
 const buyTicket = async () => {
-  if (!poster.value) {
-    purchaseError.value = 'Мероприятие не найдено';
+  if (!poster.value || !currentUser.value) {
+    purchaseError.value = 'Ошибка: данные не загружены';
     return;
   }
 
+  // Валидация данных
   if (!buyerName.value || !buyerEmail.value || !buyerPhone.value) {
     purchaseError.value = 'Заполните все обязательные поля';
     return;
@@ -192,8 +193,9 @@ const buyTicket = async () => {
   purchaseError.value = '';
 
   try {
-    const purchaseData: Purchase = {
-      userId: currentUser.value?.uid || '',
+    const ticketId = generateTicketId();
+    const purchaseData = {
+      userId: currentUser.value.uid,
       posterId: poster.value.id,
       posterTitle: poster.value.title,
       posterDate: poster.value.date,
@@ -206,12 +208,19 @@ const buyTicket = async () => {
       buyerEmail: buyerEmail.value,
       buyerPhone: buyerPhone.value,
       purchaseDate: serverTimestamp(),
-      status: 'pending',
-      ticketId: generateTicketId()
+      status: 'confirmed',
+      ticketId: ticketId,
+      eventPhoto: poster.value.photo
     };
 
+    // 1. Сохраняем в основную коллекцию purchases
     const purchasesRef = collection(db, 'purchases');
-    await setDoc(doc(purchasesRef), purchaseData);
+    await setDoc(doc(purchasesRef, ticketId), purchaseData);
+
+    // 2. Сохраняем в подколлекцию пользователя
+    const userTicketsRef = collection(db, 'users', currentUser.value.uid, 'tickets');
+    await setDoc(doc(userTicketsRef, ticketId), purchaseData);
+
     purchaseSuccess.value = true;
   } catch (error) {
     console.error('Ошибка при покупке:', error);

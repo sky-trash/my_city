@@ -81,6 +81,15 @@ const router = createRouter({
       props: true  // Передаем параметр маршрута как props
     },
     {
+      path: "/ticket/:id",
+      name: "ticket",
+      component: () => import("../pages/Ticket.vue"),
+      meta: {
+        title: "Билет"
+      },
+      props: true  // Передаем параметр маршрута как props
+    },
+    {
       path: "/admin",
       name: "admin",
       component: () => import("../pages/Admin.vue"),

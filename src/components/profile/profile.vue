@@ -3,12 +3,24 @@ defineOptions({
   name: 'UserProfile'
 })
 
+import {
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+  getDocs,
+  orderBy,
+  query,
+  where,
+  serverTimestamp,
+  onSnapshot // Добавляем отсутствующий импорт
+} from 'firebase/firestore';
+import { db } from "../../main";
+import { ref, onMounted, onUnmounted } from "vue";
+import { getAuth, onAuthStateChanged, type User } from 'firebase/auth';
+import { useRoute } from 'vue-router'; // Добавляем для работы с параметрами маршрута
 import Header from '../layout/header/header.vue';
 import Footer from '../layout/footer/footer.vue';
-import { collection, doc, onSnapshot, query, where, getDocs, orderBy } from "firebase/firestore";
-import { db } from "../../main";
-import { ref, onMounted, onUnmounted, computed } from "vue";
-import { getAuth, onAuthStateChanged, type User } from 'firebase/auth';
 
 interface UserData {
   id: string;
@@ -20,56 +32,77 @@ interface UserData {
   role?: string;
 }
 
-interface Purchase {
+interface Ticket {
   id: string;
-  userId: string;
-  posterId: string;
   posterTitle: string;
   posterDate: string;
   posterTime: string;
   posterAddress: string;
-  posterPrice: number;
   ticketCount: number;
   totalPrice: number;
-  buyerName: string;
-  buyerEmail: string;
-  buyerPhone: string;
   purchaseDate: { seconds: number; nanoseconds: number };
   status: 'pending' | 'confirmed' | 'cancelled';
-  ticketId: string;
   eventPhoto?: string;
+  ticketId: string;
 }
 
+const route = useRoute(); // Используем для получения параметров маршрута
 const auth = getAuth();
 const currentUser = ref<User | null>(null);
 const userData = ref<UserData | null>(null);
-const userTickets = ref<Purchase[]>([]);
+const tickets = ref<Ticket[]>([]);
 const authReady = ref(false);
 const isLoading = ref(false);
 const isLoadingTickets = ref(false);
 const unsubscribeSnapshot = ref<() => void>();
 const unsubscribeAuth = ref<() => void>();
 
-// Отслеживаем состояние авторизации
-onMounted(() => {
-  unsubscribeAuth.value = onAuthStateChanged(auth, async (user) => {
-    currentUser.value = user;
-    authReady.value = true;
-
-    if (user) {
-      await loadUserData(user.uid);
-      await loadUserTickets(user.uid);
-    } else {
-      userData.value = null;
-      userTickets.value = [];
-    }
+const formatFirestoreDate = (timestamp: { seconds: number, nanoseconds: number }) => {
+  if (!timestamp?.seconds) return 'Дата не указана';
+  const date = new Date(timestamp.seconds * 1000);
+  return date.toLocaleDateString('ru-RU', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
   });
-});
+};
 
-// Загрузка данных пользователя
-async function loadUserData(uid: string) {
+const formatStatus = (status: string) => {
+  const statusMap: Record<string, string> = {
+    pending: 'Ожидает подтверждения',
+    confirmed: 'Подтвержден',
+    cancelled: 'Отменен'
+  };
+  return statusMap[status] || status;
+};
+
+const loadUserTickets = async (userId: string) => {
+  isLoadingTickets.value = true;
+  try {
+    const ticketsRef = collection(db, 'users', userId, 'tickets');
+    const q = query(ticketsRef, orderBy('purchaseDate', 'desc'));
+    const querySnapshot = await getDocs(q);
+
+    tickets.value = querySnapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        ...data,
+        purchaseDate: formatFirestoreDate(data.purchaseDate)
+      } as Ticket;
+    });
+  } catch (error) {
+    console.error('Ошибка загрузки билетов:', error);
+    tickets.value = [];
+  } finally {
+    isLoadingTickets.value = false;
+  }
+};
+
+const loadUserData = async (uid: string) => {
   isLoading.value = true;
-
   try {
     if (unsubscribeSnapshot.value) {
       unsubscribeSnapshot.value();
@@ -90,60 +123,26 @@ async function loadUserData(uid: string) {
       isLoading.value = false;
     });
   } catch (error) {
-    console.error('Ошибка загрузки:', error);
+    console.error('Ошибка загрузки данных пользователя:', error);
     isLoading.value = false;
   }
-}
+};
 
-// Загрузка билетов пользователя
-async function loadUserTickets(userId: string) {
-  isLoadingTickets.value = true;
-  try {
-    const ticketsRef = collection(db, 'users', userId, 'tickets');
-    const q = query(ticketsRef, orderBy('purchaseDate', 'desc'));
-    const querySnapshot = await getDocs(q);
-    
-    userTickets.value = querySnapshot.docs.map(doc => {
-      const data = doc.data();
-      return {
-        id: doc.id,
-        ...data,
-        // Конвертируем Firestore Timestamp в дату
-        purchaseDate: formatFirestoreDate(data.purchaseDate)
-      } as Purchase;
-    });
-  } catch (error) {
-    console.error('Ошибка загрузки билетов:', error);
-    userTickets.value = [];
-  } finally {
-    isLoadingTickets.value = false;
-  }
-}
+onMounted(() => {
+  unsubscribeAuth.value = onAuthStateChanged(auth, async (user) => {
+    currentUser.value = user;
+    authReady.value = true;
 
-// Форматирование даты из Firestore
-const formatFirestoreDate = (timestamp: { seconds: number, nanoseconds: number }) => {
-  if (!timestamp?.seconds) return 'Дата не указана';
-  const date = new Date(timestamp.seconds * 1000);
-  return date.toLocaleDateString('ru-RU', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
+    if (user) {
+      await loadUserData(user.uid);
+      await loadUserTickets(user.uid);
+    } else {
+      userData.value = null;
+      tickets.value = [];
+    }
   });
-};
+});
 
-// Форматирование статуса
-const formatStatus = (status: string) => {
-  const statusMap: Record<string, string> = {
-    pending: 'Ожидает подтверждения',
-    confirmed: 'Подтвержден',
-    cancelled: 'Отменен'
-  };
-  return statusMap[status] || status;
-};
-
-// Очистка подписок
 onUnmounted(() => {
   if (unsubscribeSnapshot.value) unsubscribeSnapshot.value();
   if (unsubscribeAuth.value) unsubscribeAuth.value();
@@ -182,11 +181,7 @@ onUnmounted(() => {
         <article class="profile__icons">
           <img src="../../../public/profile/profile.svg" alt="Фон профиля">
           <div class="profile__icons__human">
-            <img
-              src="../../../public/profile/Pic.svg"
-              alt="Аватар пользователя"
-              v-if="userData"
-            >
+            <img src="../../../public/profile/Pic.svg" alt="Аватар пользователя" v-if="userData">
           </div>
         </article>
 
@@ -211,7 +206,7 @@ onUnmounted(() => {
           </template>
 
           <div class="profile__description__change">
-            <router-link :to="{ name: 'profileEdit', params: { id: userData?.id } }">
+            <router-link :to="{ name: 'profileEdit', params: { id: userData?.id || 'default' } }">
               <button>
                 <h1>Изменить</h1>
               </button>
@@ -225,37 +220,31 @@ onUnmounted(() => {
               <img src="../../../public/profile/Ticket.svg" alt="Иконка билета">
               <h1>История покупок</h1>
             </div>
-            
+
             <div class="profile__history__content__display">
               <!-- Загрузка билетов -->
               <div v-if="isLoadingTickets" class="loading-tickets">
                 <p>Загрузка истории покупок...</p>
               </div>
-              
+
               <!-- Пустая история -->
-              <div v-else-if="userTickets.length === 0" class="empty-history">
+              <div v-else-if="tickets.length === 0" class="empty-history">
                 <p>У вас пока нет купленных билетов</p>
                 <router-link to="/posters" class="browse-link">
                   Посмотреть афишу
                 </router-link>
               </div>
-              
+
               <!-- Список билетов -->
               <div v-else class="tickets-list">
-                <div
-                  v-for="ticket in userTickets"
-                  :key="ticket.id"
-                  class="ticket-card"
-                >
+                <div v-for="ticket in tickets" :key="ticket.id" class="ticket-card">
                   <div class="ticket-image-container">
-                    <img 
+                    <img
                       :src="ticket.eventPhoto ? `/imagesFirebase/posters/${ticket.eventPhoto}` : '/images/default-poster.jpg'"
-                      :alt="ticket.posterTitle"
-                      class="ticket-image"
-                      @error="(e) => (e.target as HTMLImageElement).src = '/images/default-poster.jpg'"
-                    />
+                      :alt="ticket.posterTitle" class="ticket-image"
+                      @error="(e) => (e.target as HTMLImageElement).src = '/images/default-poster.jpg'" />
                   </div>
-                  
+
                   <div class="ticket-info">
                     <h3 class="ticket-title">{{ ticket.posterTitle }}</h3>
                     <div class="ticket-meta">
@@ -263,15 +252,14 @@ onUnmounted(() => {
                       <p><strong>Место:</strong> {{ ticket.posterAddress }}</p>
                       <p><strong>Количество билетов:</strong> {{ ticket.ticketCount }}</p>
                       <p><strong>Сумма:</strong> {{ ticket.totalPrice }} ₽</p>
-                      <p><strong>Статус:</strong> <span :class="'status-' + ticket.status">{{ formatStatus(ticket.status) }}</span></p>
+                      <p><strong>Статус:</strong> <span :class="'status-' + ticket.status">{{
+                        formatStatus(ticket.status)
+                          }}</span></p>
                       <p><strong>Дата покупки:</strong> {{ ticket.purchaseDate }}</p>
                     </div>
-                    
+
                     <div class="ticket-actions">
-                      <router-link 
-                        :to="`/ticket/${ticket.ticketId}`" 
-                        class="view-ticket"
-                      >
+                      <router-link :to="`/ticket/${ticket.ticketId}`" class="view-ticket">
                         Посмотреть билет
                       </router-link>
                     </div>
@@ -304,7 +292,6 @@ onUnmounted(() => {
   text-decoration: underline;
 }
 
-/* Стили для истории билетов */
 .profile__history__content__display {
   margin-top: 20px;
 }
@@ -409,7 +396,7 @@ onUnmounted(() => {
   .ticket-card {
     flex-direction: column;
   }
-  
+
   .ticket-image-container {
     width: 100%;
     height: 150px;
