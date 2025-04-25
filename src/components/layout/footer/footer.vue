@@ -1,17 +1,23 @@
 <script setup>
-// document.getElementById("copyLink").addEventListener("click", function() {
-//   // Получаем ссылку
-//   var link = document.getElementById("http://localhost:5173/").href;
 
-//   // Копируем ссылку в буфер обмена
-//   if (window.clipboardData && window.clipboardData.setData) {
-//     // Для IE
-//     window.clipboardData.setData("Text", link);
-//   } else if (navigator.clipboard && navigator.clipboard.write) {
-//     // Для других браузеров
-//     navigator.clipboard.writeText(link);
-//   }
-// });
+const copyUrlFallback = () => {
+  const url = window.location.href;
+  const textarea = document.createElement('textarea');
+  textarea.value = url;
+  textarea.style.position = 'fixed';
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  try {
+    const successful = document.execCommand('copy');
+    alert(successful ? 'URL скопирован!' : 'Не удалось скопировать');
+  } catch (err) {
+    alert('Ошибка: ' + err);
+  }
+
+  document.body.removeChild(textarea);
+};
+
 </script>
 <template>
   <footer class="footer">
@@ -31,10 +37,10 @@
         <a href="/News">
           <h1>Родной город</h1>
         </a>
-        <a href="/Live">
+        <a href="/Directory">
           <h1>Жильё</h1>
         </a>
-        <a href="/Work">
+        <a href="/Directory">
           <h1>Работа</h1>
         </a>
         <a href="/Directory">
@@ -68,7 +74,7 @@
           <a href="https://ok.ru/">
             <img src="../../../../public/footer/Odnoklasniki.svg" alt="">
           </a>
-          <a href="#">
+          <a href="#" @click.prevent="copyUrlFallback">
             <img src="../../../../public/footer/link.svg" alt="">
           </a>
         </div>
@@ -76,7 +82,7 @@
     </article>
     <article class="footer__text">
       <h1>Сетевое издание «Мой Борисоглебск»</h1>
-      <h1 id="text-padding">Зарегистрировано Федеральной службой по надзору в сфере связи, информационных технологий и массовых коммуникаций. <br>Регистрационный номер: ЭЛ № ФС77 80278 от 25.01.2021, учредитель — Хвастунов П.А.</h1>
+      <h1 id="text-padding">Зарегистрировано Федеральной службой по надзору в сфере связи, информационных технологий и массовых коммуникаций. <br>Регистрационный номер: ЭЛ № ФС77 80278 от 25.01.2021, учредитель — Матвеев Е.И.</h1>
       <h1>Использование материалов сайта возможно только с письменного разрешения редакции. Рубрики, а также материалы и статьи, помеченные «на правах рекламы», являются рекламно-<br>информационными материалами портала.</h1>
     </article>
   </footer>

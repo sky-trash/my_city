@@ -30,6 +30,7 @@ const formatDate = (dateString: string): string => {
     return date.toLocaleDateString('ru-RU', {
       day: 'numeric',
       month: 'long',
+      year: "numeric",
       // hour: '2-digit',
       // minute: '2-digit'
     });
@@ -53,7 +54,7 @@ const fetchNews = () => {
         id: doc.id,
         title: doc.data().title || 'Без названия',
         tag: doc.data().tag || 'Общее',
-        date: formatDate(doc.data().date),
+        date: formatDate(doc.data().date) || "Дата не указана",
         photo: doc.data().photo || '/images/default-news.jpg',
         views: doc.data().views || 0
       }));
