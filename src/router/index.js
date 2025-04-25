@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '@/main'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -94,6 +96,8 @@ const router = createRouter({
       name: "admin",
       component: () => import("../pages/Admin.vue"),
       meta: {
+        requiresAuth: true, 
+        requiresAdmin: true,
         title: "Админ"
       }
     },
@@ -166,31 +170,67 @@ const getCurrentUser = () => {
   });
 };
 
+// router.beforeEach(async (to, from, next) => {
+//   try {
+//     const currentUser = await getCurrentUser();
+//     const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+//     const requiresUnauth = to.matched.some(record => record.meta.requiresUnauth);
+
+//     if (to.meta.title) {
+//       document.title = `${to.meta.title} | Мой Борисоглебск`;
+//     }
+
+//     if (requiresAuth && !currentUser) {
+//       next({ name: 'auth', query: { redirect: to.fullPath } });
+//       return; // Важно: return после next()
+//     }
+
+//     if (requiresUnauth && currentUser) {
+//       next({ name: 'profile' });
+//       return;
+//     }
+
+//     next(); // Корректный вызов
+//   } catch (error) {
+//     console.error('Ошибка проверки авторизации:', error);
+//     next('/error');
+//   }
+// });
+
 router.beforeEach(async (to, from, next) => {
-  try {
-    const currentUser = await getCurrentUser();
-    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-    const requiresUnauth = to.matched.some(record => record.meta.requiresUnauth);
+  const auth = getAuth()
+  
+  if (to.meta.requiresAuth) {
+    try {
+      const user = await new Promise((resolve) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+          unsubscribe()
+          resolve(user)
+        })
+      })
 
-    if (to.meta.title) {
-      document.title = `${to.meta.title} | Мой Борисоглебск`;
+      if (!user) {
+        return next('/Profile')
+      }
+
+      // Проверка роли администратора
+      if (to.meta.requiresAdmin) {
+        const userDoc = await getDoc(doc(db, 'users', user.uid))
+        const userData = userDoc.data()
+        
+        if (!userData || userData.role !== 2) {
+          return next('/')
+        }
+      }
+      
+      next()
+    } catch (error) {
+      console.error('Ошибка проверки авторизации:', error)
+      next('/Profile')
     }
-
-    if (requiresAuth && !currentUser) {
-      next({ name: 'auth', query: { redirect: to.fullPath } });
-      return; // Важно: return после next()
-    }
-
-    if (requiresUnauth && currentUser) {
-      next({ name: 'profile' });
-      return;
-    }
-
-    next(); // Корректный вызов
-  } catch (error) {
-    console.error('Ошибка проверки авторизации:', error);
-    next('/error');
+  } else {
+    next()
   }
-});
+})
 
 export default router
