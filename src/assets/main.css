@@ -6,6 +6,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
+@font-face {
+  font-family: 'Hiragino Kaku Gothic ProN';
+  src: local('Hiragino Kaku Gothic ProN');
+  font-display: swap;
+}
+
 * {
   padding: 0;
   margin: 0;
