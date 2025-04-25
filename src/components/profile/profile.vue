@@ -15,6 +15,7 @@ interface UserData {
   userId: string;
   name: string;
   surname: string;
+  phone: string;
   email: string;
   role?: string;
 }
@@ -134,6 +135,9 @@ onUnmounted(() => {
             <div class="profile__description__data">
               <div class="profile__description__data__name">
                 <h1>{{ userData.name }} {{ userData.surname }}</h1>
+              </div>
+              <div class="profile__description__data__email">
+                <p>+{{ userData.phone }}</p>
               </div>
               <div class="profile__description__data__email">
                 <p>{{ userData.email }}</p>

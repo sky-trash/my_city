@@ -46,6 +46,7 @@ const register = async () => {
       surname: surname.value,
       email: email.value,
       role: 'пользователь',
+      phone: '',
       userId: user.uid,
       createdAt: new Date()
     });

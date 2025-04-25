@@ -69,12 +69,12 @@ const handleSignOut = () => {
             <h1>Профиль</h1>
           </div>
         </router-link>
-        <router-link @click="handleSignOut" v-if="isLoggenIn">
+        <a @click="handleSignOut" v-if="isLoggenIn">
           <div class="header__up__site__out">
             <img src="../../../../public/header/login.svg" alt="">
             <h1>Выход</h1>
           </div>
-        </router-link>
+        </a>
       </div>
     </article>
     <router-link to="/">

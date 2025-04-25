@@ -1,8 +1,6 @@
 <script setup lang="ts">
-defineOptions({
-  name: 'profileEdit'
-})
-
+import Header from '../layout/header/header.vue'
+// import Footer from '../layout/footer/footer.vue'
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
@@ -10,25 +8,16 @@ import { db } from '../../main'
 import { getAuth } from 'firebase/auth'
 import { updateEmail } from 'firebase/auth'
 
-const updateUserEmail = async (newEmail: string) => {
-  try {
-    if (auth.currentUser) {
-      await updateEmail(auth.currentUser, newEmail)
-      // Обновляем email в Firestore
-      await updateDoc(doc(db, 'users', userData.value.id), {
-        email: newEmail
-      })
-    }
-  } catch (err) {
-    console.error('Ошибка смены email:', err)
-  }
-}
+defineOptions({
+  name: 'profileEdit'
+})
 
 interface UserData {
   id: string
   userId: string
   name: string
   surname: string
+  phone: string
   email: string
   role?: string
 }
@@ -42,6 +31,7 @@ const userData = ref<UserData>({
   userId: '',
   name: '',
   surname: '',
+  phone: '',
   email: '',
   role: ''
 })
@@ -80,11 +70,25 @@ const validateForm = () => {
   }
   return true
 }
+// Изменение email
+const updateUserEmail = async (newEmail: string) => {
+  try {
+    if (auth.currentUser) {
+      await updateEmail(auth.currentUser, newEmail)
+      // Обновляем email в Firestore
+      await updateDoc(doc(db, 'users', userData.value.id), {
+        email: newEmail
+      })
+    }
+  } catch (err) {
+    console.error('Ошибка смены email:', err)
+  }
+}
 
 // Обновляем данные профиля
 const updateProfile = async () => {
   if (!validateForm()) return
-  if (!updateUserEmail()) return
+  // if (!updateUserEmail()) return
   if (!userData.value) return
   
   isUpdating.value = true
@@ -93,6 +97,7 @@ const updateProfile = async () => {
     await updateDoc(docRef, {
       name: userData.value.name,
       surname: userData.value.surname,
+      phone: userData.value.phone,
       // email обычно не обновляется здесь, так как он привязан к аутентификации
     })
     router.push({ name: 'profile' }) // Перенаправляем после успешного обновления
@@ -107,7 +112,7 @@ const updateProfile = async () => {
 
 <template>
   <Header />
-  <main class="edit-profile">
+  <main class="edit">
     <template v-if="isLoading">
       <div class="loading">Загрузка данных профиля...</div>
     </template>
@@ -116,7 +121,7 @@ const updateProfile = async () => {
       <div class="error">{{ error }}</div>
     </template>
     
-    <template v-else>
+    <div class="edit__profile" v-else>
       <h1>Редактирование профиля</h1>
       
       <form @submit.prevent="updateProfile">
@@ -139,6 +144,16 @@ const updateProfile = async () => {
             required
           >
         </div>
+
+        <div class="form-group">
+          <label for="surname">Телефон:</label>
+          <input
+            id="phone"
+            v-model="userData.phone"
+            type="number"
+            required
+          >
+        </div>
         
         <div class="form-group">
           <label for="email">Email:</label>
@@ -146,7 +161,7 @@ const updateProfile = async () => {
             id="email"
             v-model="userData.email"
             type="email"
-            required
+            disabled
           >
           <small>Email нельзя изменить</small>
         </div>
@@ -167,7 +182,7 @@ const updateProfile = async () => {
           </router-link>
         </div>
       </form>
-    </template>
+    </div>
   </main>
   <Footer />
 </template>
