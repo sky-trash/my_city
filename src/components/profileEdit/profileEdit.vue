@@ -163,7 +163,7 @@ const updateProfile = async () => {
             type="email"
             disabled
           >
-          <small>Email нельзя изменить</small>
+          <small>Email изменить нельзя</small>
         </div>
         
         <div class="actions">

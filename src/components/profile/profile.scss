@@ -156,6 +156,9 @@
   text-decoration: none;
   font-weight: 500;
 }
+.browse-link:hover {
+  text-decoration: underline;
+}
 
 .tickets-list {
   display: flex;
