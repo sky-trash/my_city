@@ -110,6 +110,15 @@ const router = createRouter({
       }
     },
     {
+      path: "/attraction/:id",
+      name: "AttractionDetail",
+      component: () => import("../pages/AttaractionDetail.vue"),
+      meta: {
+        title: "Детальные достопремичательности"
+      },
+      props: true,
+    },
+    {
       path: "/contact",
       name: "contact",
       component: () => import("../pages/Contact.vue"),

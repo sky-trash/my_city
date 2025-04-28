@@ -68,19 +68,19 @@ const buyerPhone = ref('');
 
 const formatPhone = (phone: string) => phone.replace(/\D/g, '');
 
-const formatDate = (dateString: string): string => {
-  if (!dateString) return "";
-  try {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("ru-RU", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
-  } catch {
-    return dateString;
-  }
-};
+// const formatDate = (dateString: string): string => {
+//   if (!dateString) return "";
+//   try {
+//     const date = new Date(dateString);
+//     return date.toLocaleDateString("ru-RU", {
+//       day: "numeric",
+//       month: "long",
+//       year: "numeric",
+//     });
+//   } catch {
+//   return dateString;
+//   }
+// };
 
 const handleImageError = (e: Event) => {
   (e.target as HTMLImageElement).src = '/images/default-poster.jpg';
@@ -120,7 +120,7 @@ const loadPoster = async () => {
         title: data?.title || "Без названия",
         tag: data?.tag || "Другое",
         price: data?.price || 0,
-        date: formatDate(data?.date) || "Дата не указана",
+        date: data?.date || "Дата не указана",
         time: data?.time || "Время не указано",
         address: data?.address || "Адрес не указан",
         home: data?.home || "Место проведения не указано",
