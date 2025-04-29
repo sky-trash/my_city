@@ -7,6 +7,8 @@ import { db } from '../../main'
 import Header from '../layout/header/header.vue'
 import Footer from '../layout/footer/footer.vue'
 import QRCode from 'qrcode'
+import html2canvas from 'html2canvas'
+import jsPDF from 'jspdf'
 
 interface Ticket {
   id: string
@@ -113,9 +115,53 @@ const loadTicket = async (ticketId: string, userId: string) => {
   }
 }
 
-const downloadTicket = () => {
-  // Здесь должна быть логика генерации PDF
-  alert('Функция скачивания PDF будет реализована позже')
+const downloadTicket = async () => {
+  try {
+    isLoading.value = true
+
+    // Получаем элемент билета
+    const ticketElement = document.querySelector('.ticket-container') as HTMLElement
+    if (!ticketElement) {
+      throw new Error('Элемент билета не найден')
+    }
+
+    // Создаем canvas из HTML
+    const canvas = await html2canvas(ticketElement, {
+      scale: 2, // Увеличиваем качество
+      useCORS: true, // Для загрузки внешних изображений
+      logging: false,
+      allowTaint: true
+    })
+
+    // Создаем PDF
+    const pdf = new jsPDF('p', 'mm', 'a4')
+    const imgData = canvas.toDataURL('image/png')
+    const imgWidth = 210 // Ширина A4 в мм
+    const pageHeight = 297 // Высота A4 в мм
+    const imgHeight = canvas.height * imgWidth / canvas.width
+    let heightLeft = imgHeight
+    let position = 0
+
+    // Добавляем первую страницу
+    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
+    heightLeft -= pageHeight
+
+    // Добавляем дополнительные страницы, если билет не помещается на одну
+    while (heightLeft >= 0) {
+      position = heightLeft - imgHeight
+      pdf.addPage()
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
+      heightLeft -= pageHeight
+    }
+
+    // Сохраняем PDF
+    pdf.save(`билет-${ticket.value?.ticketId || 'unknown'}.pdf`)
+  } catch (error) {
+    console.error('Ошибка при создании PDF:', error)
+    alert('Не удалось создать PDF файл')
+  } finally {
+    isLoading.value = false
+  }
 }
 
 const sendToEmail = () => {
@@ -218,8 +264,9 @@ onUnmounted(() => {
       </div>
 
       <div class="ticket-actions">
-        <button @click="downloadTicket" class="download-btn">
-          Скачать билет (PDF)
+        <button @click="downloadTicket" class="download-btn" :disabled="isLoading">
+          <span v-if="!isLoading">Скачать билет (PDF)</span>
+          <span v-else>Генерация PDF...</span>
         </button>
         <button @click="sendToEmail" class="email-btn">
           Отправить на email
@@ -231,6 +278,7 @@ onUnmounted(() => {
         <ol>
           <li>Сохраните билет на устройство или распечатайте</li>
           <li>Придите на мероприятие заранее (рекомендуем за 30-40 минут)</li>
+          <li>Оплатите билет на кассе</li>
           <li>Покажите QR-код на входе</li>
         </ol>
       </div>

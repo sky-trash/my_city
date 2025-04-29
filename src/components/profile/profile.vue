@@ -247,7 +247,7 @@ onUnmounted(() => {
                     <h3 class="ticket-title">{{ ticket.posterTitle }}</h3>
                     <div class="ticket-meta">
                       <p><strong>Дата:</strong> {{ ticket.posterDate }}, {{ ticket.posterTime }}</p>
-                      <p><strong>Место:</strong> {{ ticket.posterAddress }}</p>
+                      <p><strong>Адрес:</strong> {{ ticket.posterAddress }}</p>
                       <p><strong>Количество билетов:</strong> {{ ticket.ticketCount }}</p>
                       <p><strong>Сумма:</strong> {{ ticket.totalPrice }} ₽</p>
                       <p><strong>Статус:</strong> <span :class="'status-' + ticket.status">{{ formatStatus(ticket.status) }}</span></p>

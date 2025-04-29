@@ -114,5 +114,5 @@ onMounted(async () => {
   <Footer />
 </template>
 <style scoped>
-@import "./attractionDetail.scss";
+@import "./attaractionDetail.scss";
 </style>

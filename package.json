@@ -13,6 +13,8 @@
     "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "express": "^5.1.0",
     "firebase": "^11.6.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.1",
     "pinia": "^3.0.1",
     "qrcode": "^1.5.4",
     "vue": "^3.5.13",
