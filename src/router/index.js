@@ -180,25 +180,31 @@ const getCurrentUser = () => {
 }
 
 router.beforeEach(async (to, from, next) => {
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
-  const requiresAdmin = to.matched.some(record => record.meta.requiresAdmin)
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  const requiresAdmin = to.matched.some(record => record.meta.requiresAdmin);
 
   if (requiresAuth || requiresAdmin) {
-    const user = await getCurrentUser()
+    const user = await getCurrentUser();
     if (!user) {
-      return next('/auth?redirect=' + to.path)
+      return next('/auth?redirect=' + to.path);
     }
 
     if (requiresAdmin) {
-      const userDoc = await getDoc(doc(db, 'users', user.uid))
-      if (!userDoc.exists() || userDoc.data().role !== false) {
-        console.log('Admin access denied')
-        return next('/')
+      try {
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        if (!userDoc.exists() || userDoc.data().role !== true) {
+          console.log('Admin access denied for:', user.email);
+          return next('/admin');
+        }
+        console.log('Admin access granted for:', user.email);
+      } catch (error) {
+        console.error('Error checking admin status:', error);
+        return next('/');
       }
     }
   }
   
-  next()
-})
+  next();
+});
 
 export default router
