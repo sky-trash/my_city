@@ -3,8 +3,8 @@ import Header from '../layout/header/header.vue';
 import { useRouter } from "vue-router";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { ref } from "vue";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../main"
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../main";
 
 const errMsg = ref<string>("");
 const email = ref<string>("");
@@ -14,6 +14,9 @@ const surname = ref<string>("");
 const router = useRouter();
 const auth = getAuth();
 const isLoading = ref<boolean>(false);
+
+// Список email-адресов администраторов
+const ADMIN_EMAILS = ['admin@example.com', 'superuser@example.com'];
 
 const validateForm = (): boolean => {
   if (!email.value || !password.value || !name.value || !surname.value) {
@@ -36,42 +39,50 @@ const register = async () => {
   errMsg.value = "";
 
   try {
-    //Создаем пользователя в Firebase Auth
+    // 1. Создаем пользователя в Firebase Auth
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
     const user = userCredential.user;
 
-    //Добавляем данные пользователя в Firestore
-    await addDoc(collection(db, 'users'), {
+    // 2. Проверяем, является ли email администраторским
+    const isAdmin = ADMIN_EMAILS.includes(email.value);
+
+    // 3. Создаем документ пользователя в Firestore
+    await setDoc(doc(db, 'users', user.uid), {
       name: name.value,
       surname: surname.value,
       email: email.value,
-      role: false,
+      role: isAdmin, // true для админов, false для обычных пользователей
       phone: '',
       userId: user.uid,
-      createdAt: new Date()
+      createdAt: new Date(),
+      lastLogin: new Date()
     });
 
-    //Перенаправляем на страницу профиля
-    router.push('/Profile');
+    // 4. Перенаправляем на соответствующую страницу
+    router.push(isAdmin ? '/admin' : '/profile');
+    
   } catch (error: any) {
     console.error("Ошибка регистрации:", error);
-
-    switch (error.code) {
-      case "auth/invalid-email":
-        errMsg.value = "Некоректный email";
-        break;
-      case "auth/email-already-in-use":
-        errMsg.value = "Аккаунт с таким email уже существует";
-        break;
-      case "auth/weak-password":
-        errMsg.value = "Пароль должен содержать минимум 6 символов";
-        break;
-      default:
-        errMsg.value = "Произошла ошибка при регистрации. Пожалуйста, попробуйте позже.";
-        break;
-    }
+    handleRegistrationError(error);
   } finally {
     isLoading.value = false;
+  }
+};
+
+const handleRegistrationError = (error: any) => {
+  switch (error.code) {
+    case "auth/invalid-email":
+      errMsg.value = "Некоректный email";
+      break;
+    case "auth/email-already-in-use":
+      errMsg.value = "Аккаунт с таким email уже существует";
+      break;
+    case "auth/weak-password":
+      errMsg.value = "Пароль должен содержать минимум 6 символов";
+      break;
+    default:
+      errMsg.value = "Произошла ошибка при регистрации. Пожалуйста, попробуйте позже.";
+      break;
   }
 };
 </script>

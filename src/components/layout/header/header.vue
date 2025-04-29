@@ -37,10 +37,9 @@ onMounted(() => {
       const userDocRef = doc(db, 'users', user.uid);
       
       try {
-        // Создаем/обновляем документ пользователя
+        // Обновляем только lastLogin, не перезаписывая роль
         await setDoc(userDocRef, {
           email: user.email,
-          role: true, // Устанавливаем роль администратора
           lastLogin: new Date()
         }, { merge: true });
 
@@ -48,6 +47,7 @@ onMounted(() => {
         unsubscribeUser = onSnapshot(userDocRef, (doc) => {
           console.log("User data:", doc.data());
           if (doc.exists()) {
+            // Правильная проверка роли
             isAdmin.value = doc.data().role === true;
             console.log("Is admin:", isAdmin.value);
           } else {
@@ -77,6 +77,7 @@ const handleSignOut = () => {
 onUnmounted(() => {
   if (unsubscribeUser) unsubscribeUser();
 });
+
 </script>
 
 <template>

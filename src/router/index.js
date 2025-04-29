@@ -191,7 +191,7 @@ router.beforeEach(async (to, from, next) => {
 
     if (requiresAdmin) {
       const userDoc = await getDoc(doc(db, 'users', user.uid))
-      if (!userDoc.exists() || userDoc.data().role !== true) {
+      if (!userDoc.exists() || userDoc.data().role !== false) {
         console.log('Admin access denied')
         return next('/')
       }

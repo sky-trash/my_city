@@ -29,7 +29,6 @@ interface UserData {
   surname: string;
   phone: string;
   email: string;
-  role?: string;
 }
 
 interface Ticket {
