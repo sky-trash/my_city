@@ -1,31 +1,69 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, onUnmounted, watch } from 'vue';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { doc, onSnapshot, setDoc } from 'firebase/firestore'; // Добавлен setDoc
+import { db } from '../../../main';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const isLoggenIn = ref(false);
+const isLoggedIn = ref(false);
 const isAuth = ref(true);
-
-onMounted(() => {
-  auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      isAuth.value = false;
-    } else {
-      isAuth.value = true;
-    }
-  });
-});
+const isAdmin = ref(false);
 
 let auth;
+let unsubscribeUser;
+
+const goToAdmin = () => {
+  router.push('/admin')
+}
+
+router.afterEach((to, from) => {
+  console.log(`Navigated from ${from.path} to ${to.path}`)
+})
+
+watch(isAdmin, (newVal) => {
+  console.log('Admin status changed:', newVal)
+})
+
 onMounted(() => {
   auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, async (user) => {
+    console.log("Auth state changed, user:", user);
     if (user) {
-      isLoggenIn.value = true;
+      isLoggedIn.value = true;
+      isAuth.value = false;
+      
+      console.log("User UID:", user.uid);
+      const userDocRef = doc(db, 'users', user.uid);
+      
+      try {
+        // Создаем/обновляем документ пользователя
+        await setDoc(userDocRef, {
+          email: user.email,
+          role: true, // Устанавливаем роль администратора
+          lastLogin: new Date()
+        }, { merge: true });
+
+        // Подписываемся на изменения
+        unsubscribeUser = onSnapshot(userDocRef, (doc) => {
+          console.log("User data:", doc.data());
+          if (doc.exists()) {
+            isAdmin.value = doc.data().role === true;
+            console.log("Is admin:", isAdmin.value);
+          } else {
+            isAdmin.value = false;
+          }
+        }, (error) => {
+          console.error("Firestore error:", error);
+        });
+      } catch (error) {
+        console.error("Error setting document:", error);
+      }
     } else {
-      isLoggenIn.value = false;
+      isLoggedIn.value = false;
+      isAuth.value = true;
+      isAdmin.value = false;
+      if (unsubscribeUser) unsubscribeUser();
     }
   });
 });
@@ -35,7 +73,12 @@ const handleSignOut = () => {
     router.push("/");
   });
 };
+
+onUnmounted(() => {
+  if (unsubscribeUser) unsubscribeUser();
+});
 </script>
+
 <template>
   <header class="header">
     <article class="header__up">
@@ -63,13 +106,19 @@ const handleSignOut = () => {
             <h1>Вход</h1>
           </div>
         </router-link>
-        <router-link to="/Profile" v-if="isLoggenIn">
+        <router-link to="/admin" v-if="isAdmin">
+          <div class="header__up__site__profile">
+            <img src="../../../../public/header/login.svg" alt="">
+            <h1>Админ панель</h1>
+          </div>
+        </router-link>
+        <router-link to="/Profile" v-if="isLoggedIn">
           <div class="header__up__site__profile">
             <img src="../../../../public/header/login.svg" alt="">
             <h1>Профиль</h1>
           </div>
         </router-link>
-        <a @click="handleSignOut" v-if="isLoggenIn">
+        <a @click="handleSignOut" v-if="isLoggedIn">
           <div class="header__up__site__out">
             <img src="../../../../public/header/login.svg" alt="">
             <h1>Выход</h1>
