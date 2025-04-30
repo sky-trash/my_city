@@ -15,4 +15,9 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  build: {
+    outDir: 'dist', // Папка для сборки
+    assetsDir: 'assets', // Папка для статики
+    emptyOutDir: true, // Очищать папку перед сборкой
+  }
 })
